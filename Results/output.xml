@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.6.5 on win32)" generated="20230414 16:23:13.187" rpa="false" schemaversion="3">
+<suite id="s1" name="HomeScreen" source="C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\Optimized_TestSuites\Home\HomeScreen.robot">
+<kw name="Run Keywords" library="BuiltIn" type="SETUP">
+<arg>Login api calls</arg>
+<arg>AND</arg>
+<arg>Initialize configuration parameters</arg>
+<arg>AND</arg>
+<arg>Launch the Application and navigate to cmc</arg>
+<arg>AND</arg>
+<arg>navigate to homescreen</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<kw name="Login api calls" library="ExploreData_BasicMenus">
+<kw name="ConfigReader Stage" library="CMCAPI_Integration">
+<kw name="Call Method" library="BuiltIn">
+<var>${response_ConfigReader}</var>
+<arg>${CMCconnectionObj}</arg>
+<arg>ConfigReaderStage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20230414 16:23:16.357" level="INFO">[]
+['ENVIRONMENT', 'APPLICATION', 'ConstantContact', 'MYSQl', 'ApplicationUrl', 'APIDATA', 'RESTAPI', 'Qlick_ObjId', 'WIDGET_MONTH', 'CONTENT_TYPE', 'SubscriberName', 'MAILCHIMP', 'FACEBOOK', 'HUBSPOT']</msg>
+<msg timestamp="20230414 16:23:16.357" level="INFO">${response_ConfigReader} = https://stage.api.calix.ai</msg>
+<status status="PASS" starttime="20230414 16:23:16.357" endtime="20230414 16:23:16.357"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>running Stage..</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230414 16:23:16.357" endtime="20230414 16:23:16.357"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:16.357" endtime="20230414 16:23:16.357"/>
+</kw>
+<kw name="APIReponse Login" library="CMCAPI_Integration">
+<kw name="Call Method" library="BuiltIn">
+<var>${response_Login}</var>
+<arg>${CMCconnectionObj}</arg>
+<arg>loginAPI</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20230414 16:23:19.474" level="INFO">https://stage.api.calix.ai/v1/authentication/token
+&lt;Response [200]&gt;
+{'user_type': 'local', 'access_token': 'aMGt1G5OjYOKvCKfhD0oGOHXGUhw', 'refresh_token': '896fdxjBoAs8dpFOwlJ2Mza8NmG90VXO', 'scopes': ['cloud.rbac.csc.services.data.speed_test:read,write', 'cloud.rbac.coc.traffic.applications.report:read,write', 'cloud.rbac.csc.apps.servify:read', 'cloud.rbac.csc.cpe.comm_logs:read,write', 'cloud.rbac.csc.cpe.event_history:read,write', 'cloud.rbac.coc.insights.networktrends:read,write', 'cloud.rbac.csc.cpe.data_model:read,write', 'cloud.cmc.insights:read,write', 'cloud.rbac.csc.apps.experienceiq.enablement:read,write', 'cloud.rbac.csc.qoe:read', 'cloud.rbac.csc.apps.protectiq:read,write', 'cloud.rbac.csc.cpe.update_image:read,write', 'cloud.rbac.csc.netops.config.ext_file_server:read', 'cloud.rbac.coc.operations.report.unmappedips:read,write', 'cloud.rbac.csc.netops.operations:read', 'cloud.rbac.csc.apps.mycommunityiq:read', 'cloud.rbac.csc.netops:read', 'cloud.rbac.csc.services.data.trafficreports:read,write', 'cloud.rbac.csc.apps.experienceiq:read,write', 'cloud.rbac.coc.operations.subscriber.configurations:read,write', 'cloud.rbac.coc.insights.subscribersystems.cmndiqstatus:read,write', 'cloud.rbac.coc.traffic.location:read,write', 'cloud.rbac.csc.netops.operations.config_files:read', 'cloud.rbac.coc.issues.report.activealarm:read,write', 'cloud.rbac.coc.systems.subscriber:read,write', 'cloud.csc.device.cfg:read,write', 'cloud.rbac.coc.traffic.location.report:read,write', 'cloud.cmc.retention:read,write', 'cloud.rbac.coc.issues.report.historyalarm:read,write', 'cloud.rbac.coc.insights.subscribersystems.systemmodel:read,write', 'cloud.rbac.foundation.configurations:read,write', 'cloud.rbac.coc.insights.subscribersystems.systemstatus:read,write', 'cloud.rbac.csc.services.video:read,write', 'cloud.rbac.coc.traffic.applications:read,write', 'cloud.rbac.csc.netops.config:read', 'cloud.rbac.coc.operations.network:read', 'cloud.rbac.coc.insights.subscribersystems.revedgesuiteecosystemstatus:read,write', 'cloud.csc.scautorun:read,write', 'cloud.rbac.csc.services.data.wan_status:read,write', 'cloud.rbac.coc.health:read,write', 'cloud.rbac.csc.apps.bark:read', 'cloud.rbac.csc.cpe.connect_device:read,write', 'cloud.rbac.coc.insights.activdevicesgeomap:read,write', 'cloud.rbac.csc.ssidmanager:read,write', 'cloud.rbac.csc.netops.mgmt.devices_delete:read,write', 'cloud.rbac.coc.insights.networktrends.activepons:read,write', 'cloud.rbac.csc.search:read,write', 'cloud.rbac.coc.health.pon:read,write', 'cloud.rbac.coc.operations.report.calloutcomereports:read,write', 'cloud.rbac.csc.netops.config.secure_onboarding:read', 'cloud.rbac.coc.systems.network:read,write', 'cloud.rbac.coc.issues.report:read,write', 'cloud.rbac.csc.netops.config.speed_test:read', 'cloud.rbac.csc.services.data:read,write', 'cloud.rbac.csc.apps.protectiq.enablement:read,write', 'cloud.rbac.csc.netops.operations.device_group:read', 'cloud.rbac.csc.wifi:read,write', 'cloud.csc.subscriber:read,write', 'cloud.rbac.csc.netops.reports:read', 'cloud.rbac.csc.devices:read', 'cloud.rbac.coc.health.ethernet:read,write', 'cloud.rbac.csc.netops.config.self_heal:read', 'cloud.csc.device.trafficreports:read,write', 'cloud.rbac.csc.services:read,write', 'cloud.rbac.coc.issues.current:read,write', 'cloud.rbac.coc.traffic:read,write', 'cloud.rbac.csc.calloutcome.createview:read,write', 'cloud.rbac.csc.netops.config.stale_purge:read', 'cloud.rbac.csc.ssidmanager.ssidedit:read,write', 'cloud.rbac.csc.netops.mgmt.subscribers:read,write', 'cloud.rbac.cmc.subscriber:read', 'cloud.rbac.csc.cpe.factory_reset:read,write', 'cloud.rbac.coc.health.pon.realtime:read,write', 'cloud.rbac.coc.insights.subscribersystems:read,write', 'cloud.rbac.coc.insights.networktrends.subscriberimpacted:read,write', 'cloud.rbac.csc.apps.arlo:read', 'cloud.rbac.csc.netops.mgmt:read,write', 'cloud.rbac.foundation.reports:read,write', 'cloud.rbac.cmc.exploredata:read,write', 'cloud.rbac.coc.operations.network.policies:read', 'cloud.rbac.csc.netops.operations.profiles:read', 'cloud.rbac.csc.cpe.reboot:read,write', 'cloud.rbac.coc.operations.report.invreports:read,write', 'cloud.csc.device.systools:read,write', 'cloud.rbac.csc.cpe.settings:read,write', 'cloud.rbac.coc.dashboard:read,write', 'cloud.rbac.csc.apps.protectiq.configuration:read,write', 'cloud.rbac.csc.cpe.device_logs:read,write', 'cloud.csc.device:read,write', 'cloud.rbac.csc.netops.operations.sw_images:read', 'cloud.rbac.csc.netops.operations.workflow:read', 'cloud.rbac.csc.netops.reports.inv_report:read', 'cloud.rbac.csc.cpe.gfast:read,write', 'cloud.rbac.csc.netops.reports.unassociated_devices:read', 'cloud.rbac.csc.cpe.trace_route:read,write', 'cloud.rbac.csc.apps.experienceiq.configuration:read,write', 'cloud.rbac.coc.operations.subscriber.operations:read,write', 'cloud.rbac.coc.insights.networktrends.biperrors:read,write', 'cloud.rbac.foundation:read,write', 'cloud.rbac.csc.apps:read,write', 'cloud.rbac.csc.cpe:read,write', 'cloud.cmc.upsell:read,write', 'cloud.rbac.coc.health.pon.report:read,write', 'cloud.rbac.coc.insights.networktrends.activealarm:read,write', 'cloud.rbac.coc.issues:read,write', 'cloud.rbac.coc.operations.report.unassociatedsystems:read,write', 'cloud.rbac.coc.systems:read,write', 'cloud.rbac.coc.operations.network.alarmnotifications:read,write', 'cloud.rbac.csc.topology:read', 'cloud.rbac.coc.operations.subscriber:read,write', 'cloud.rbac.coc.insights:read,write', 'cloud.rbac.coc.health.ae:read,write', 'cloud.admin.roles:read,write', 'cloud.rbac.coc.systems.network.nwdelete:read,write', 'cloud.rbac.csc.cpe.xdsl:read,write', 'cloud.rbac.coc.insights.subscribersystems.systemtype:read,write', 'cloud.rbac.coc.operations.report:read,write', 'cloud.rbac.coc.health.ont:read,write', 'cloud.rbac.csc.netops.operations.perf_testing:read', 'cloud.rbac.csc.cpe.l2security:read,write', 'cloud.rbac.coc.operations.report.auditreports:read,write', 'cloud.rbac.coc.traffic.network:read,write', 'cloud.rbac.cmc.campaign:read,write', 'cloud.admin.users:read,write', 'cloud.rbac.csc.cpe.backup_restore:read,write', 'cloud.rbac.coc.systems.network.nwdisconnect:read,write', 'cloud.rbac.foundation.systems:read,write', 'cloud.rbac.csc.ssidmanager.ssidcreate:read,write', 'cloud.rbac.coc.operations.report.epcountbymapper:read,write', 'cloud.rbac.coc.traffic.location.realtime:read,write', 'cloud.rbac.coc.traffic.network.report:read,write', 'cloud.rbac.csc.cpe.ping:read,write', 'cloud.rbac.csc.netops.reports.auditreports:read,write', 'cloud.rbac.csc.netops.mgmt.devices:read,write', 'cloud.rbac.coc.insights.subscribersystems.systembyrevenueedgeiqsuites:read,write', 'cloud.cmc.acquisition:read,write', 'cloud.rbac.csc.netops.config.dial_plan:read', 'cloud.rbac.coc.operations.report.ontdevices:read,write', 'cloud.csc.device.troubleshooting:read,write', 'cloud.rbac.csc.netops.config.site_scan:read', 'cloud.rbac.coc.traffic.applications.realtime:read,write', 'cloud.rbac.csc.ssidmanager.viewpassphrase:read,write', 'cloud.rbac.coc.traffic.network.realtime:read,write', 'cloud.rbac.coc.operations.network.transformalarmrules:read,write', 'cloud.rbac.csc.dashboards:read,write', 'cloud.rbac.foundation.insights:read,write', 'cloud.rbac.coc.operations:read', 'cloud.rbac.cmc.revenue:read', 'cloud.rbac.coc.operations.report.mappedeplists:read,write', 'cloud.rbac.csc.services.voice:read,write', 'cloud.rbac.csc.netops.config.subnet_config:read', 'cloud.rbac.csc.search.onboardedemaladdr:read,write', 'cloud.rbac.csc.netops.reports.call_outcome:read'], 'entitlements': [{'name': 'Calix Operations Cloud', 'apptype': 102, 'startdate': '', 'enddate': '', 'overriddendate': '2042-01-31'}, {'name': 'Marketing Cloud Platform', 'apptype': 122, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Marketing Cloud Service', 'apptype': 119, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Bark Junior', 'apptype': 220, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'SmallBizIQ', 'apptype': 218, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Bark Premium', 'apptype': 219, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Servify Gold', 'apptype': 217, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Servify Silver', 'apptype': 216, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Servify Platinum', 'apptype': 215, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'ARLO Unlimited Plus', 'apptype': 213, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Broadband Performance Testing', 'apptype': 211, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Support Cloud Basic', 'apptype': 120, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Calix Cloud Subscriber Service API', 'apptype': 208, 'startdate': '', 'enddate': '', 'overriddendate': '2024-01-31'}, {'name': 'Servify Bronze', 'apptype': 207, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'SmartTown Wi-Fi - Subscribers', 'apptype': 214, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'ARLO Unlimited', 'apptype': 212, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'ARLO', 'apptype': 206, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Calix Operations Cloud Flow Limited', 'apptype': 210, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Samsung Smartthings Hub', 'apptype': 202, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'EXOS Support', 'apptype': 201, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Support Cloud Performance Testing', 'apptype': 131, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'Support Cloud', 'apptype': 118, 'startdate': '', 'enddate': '', 'overriddendate': ''}, {'name': 'EXOS Framework', 'apptype': 200, 'startdate': '', 'enddate': '', 'overriddendate': ''}], 'username': 'AutomationCMCRegression', 'OrgId': '10009', 'OrgName': 'CMC Test ORG', 'SpId': 'aIUsEL7eOy', 'UserId': '4206014816090160805', 'firstName': 'Automation', 'lastName': 'CMCRegression', 'roles': ['Operations', 'NetworkSupport', 'ServiceSupport(DC)', 'NetworkEngineer', 'NetOps', 'OrgAdmin', 'ServiceSupport', 'MarketingAllAccess'], 'landingPage': 'CSC', 'org_sfid': '', 'language': ''}
+access_token :  aMGt1G5OjYOKvCKfhD0oGOHXGUhw
+refresh_token :  896fdxjBoAs8dpFOwlJ2Mza8NmG90VXO
+LoginUser:  AutomationCMCRegression
+OrgId 10009
+OrgName CMC Test ORG
+SpId aIUsEL7eOy
+roles ['Operations', 'NetworkSupport', 'ServiceSupport(DC)', 'NetworkEngineer', 'NetOps', 'OrgAdmin', 'ServiceSupport', 'MarketingAllAccess']
+entitlementApptype:  [102, 122, 119, 220, 218, 219, 217, 216, 215, 213, 211, 120, 208, 207, 214, 212, 206, 210, 202, 201, 131, 118, 200]</msg>
+<msg timestamp="20230414 16:23:19.474" level="INFO">${response_Login} = ('aMGt1G5OjYOKvCKfhD0oGOHXGUhw', 200)</msg>
+<status status="PASS" starttime="20230414 16:23:16.362" endtime="20230414 16:23:19.474"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response_Login}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230414 16:23:19.474" endtime="20230414 16:23:19.474"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>'''${response_Login}'''</arg>
+<arg>200</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230414 16:23:19.474" endtime="20230414 16:23:19.474"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:16.357" endtime="20230414 16:23:19.474"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:16.355" endtime="20230414 16:23:19.474"/>
+</kw>
+<kw name="Initialize configuration parameters" library="CommonWrapper">
+<doc>It will Initialize the Configuration file for locators and testdata's for both dev and stage</doc>
+<kw name="Parsing locators information" library="ConfigParserKeywords">
+<kw name="Set Log Level" library="BuiltIn">
+<arg>NONE</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20230414 16:23:19.474" endtime="20230414 16:23:19.474"/>
+</kw>
+<kw name="Parse Yaml" library="config_parser">
+<var>${locators_params}</var>
+<arg>C:\\Users\\Kathir\\Documents\\GitHub-23.2\\CMC-Robotframework-23.2${/}Configure${/}Variables${/}Locatorparams.yml</arg>
+<doc>This function will parse the yaml file and return the object
+:param filename: the yaml file to be parsed</doc>
+<status status="PASS" starttime="20230414 16:23:19.474" endtime="20230414 16:23:19.507"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20230414 16:23:19.507" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230414 16:23:19.507" endtime="20230414 16:23:19.507"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${locators_params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230414 16:23:19.507" level="INFO">${locators_params} = {'Home': {'Thoughtspot_Insights': {'Insights': "//*[@class='ng-star-inserted']//*[contains(text(),'Insights')]/parent::div//*[@id='thoughtspot_insight_board']", 'Subscribers_thoughtspot': "//*[@class=...</msg>
+<status status="PASS" starttime="20230414 16:23:19.507" endtime="20230414 16:23:19.507"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${locators_params}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230414 16:23:19.507" level="INFO">{'Home': {'Thoughtspot_Insights': {'Insights': "//*[@class='ng-star-inserted']//*[contains(text(),'Insights')]/parent::div//*[@id='thoughtspot_insight_board']", 'Subscribers_thoughtspot': "//*[@class='bk-title-section']//*[contains(text(),'Subscribers')]", 'Average_fee': "//*[@class='bk-title-section']//*[contains(text(),'Average Attainablefee')]", 'Thoughtspot_logo': "//*[@class='bk-ts-powered-footer-logo']//*[@src='/resources/img/logo/TS-PoweredBy-Black.svg']"}}, 'Campaigns': {'Triggered_campaign': {'Campaign_search': "css=[placeholder='Search']", 'Pause_btn_show': "css=[class='d-inline-flex show']&gt;a&gt;[src='../../../../assets/img/ic_controls_pause.svg']", 'Pause_btn_hide': "css=[class='d-inline-flex hide']&gt;a&gt;[src='../../../../assets/img/ic_controls_pause.svg']", 'Edit_btn': "css=[class='d-inline-flex']&gt;span&gt;[class='fas fa-pencil-alt']", 'Play_btn_show': "css=[class='d-inline-flex show']&gt;a&gt;[src='../../../../assets/img/ic_controls_play.svg']", 'Play_btn_hide': "css=[class='d-inline-flex hide']&gt;a&gt;[src='../../../../assets/img/ic_controls_play.svg']", 'Delete_btn': "css=[title='Delete']&gt;[class='mr-0 primary fas fa-trash-alt']", 'Popup_pause_txt': 'id=title-pause-campaign', 'Popup_pausehelp_txt': "css=[class='ccl-form-labe']", 'Popup_pause_btn': 'id=BtnPauseCampaign', 'Popup_cancel_btn': 'id=BtnCancelPauseCampaign', 'Popup_close_btn': "css=[class='close']&gt;span", 'Delete_header': 'id=title-delete-campaign', 'Delete_help_txt': "css=[class='ccl-form-label pr-2']", 'Delete_cnfrm_btn': 'id=btnDeleteCampaign', 'Delete_cancel_btn': 'id=btnCancelDeleteCampaign', 'Draft_status_txt': "css=tr[class='odd']&gt;:nth-child(2)&gt;div", 'Define_Header_path': "css=[class^='col-sm-12 col-form-label']", 'Instance_Input_field': 'id=campaign-event', 'Resend_Input_field': 'id=campaign-trigger', 'Budget_Input_field': 'id=campaign-budget', 'Target_Input_field': 'id=campaign-target', 'Start_Input_field': "css=[placeholder='Select Start Date']", 'testData_highLightedDate': "//span[contains(@class,'highlight')]", 'End_Input_field': "css=[id='campaign-date'][placeholder='Indefinite (May Be Paused)']", 'Define_cmp_name': "css=[title='Service Limit Hits']", 'Draft_Status': "css=[title='Draft']", 'Active_Status': "css=[title='Active']", 'Close_btn': "css=[src='assets/img/ic_removeall.svg']", 'Next_btn': "css=[class='btn-arrow btn-arr-nxt primary ng-star-inserted']", 'Previous_btn': "css=[class='btn-arrow btn-arr-prev btn-grey ng-star-inserted']", 'Save_cmp_btn': "css=[class='btn-default btn-dft m-w100p ng-star-inserted']", 'All_checkbox': 'id=headerCheckBox', 'Mailchimp_checkbox': 'id=mobilechannelCheckBox', 'Channel_header': 'css=thead&gt;tr&gt;th', 'Description_exp': "css=[class='ng-star-inserted']&gt;:nth-child(5)", 'Mailchimp_header': 'id=deploy-mailchimp', 'Segment_help_path': "css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']&gt;:nth-child(2)", 'Note_path': "css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']&gt;:nth-child(3)", 'ECB_path': "css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']&gt;:nth-child(4)", 'Deploy_btn': "css=[class='deploy-btn ng-star-inserted']", 'Popup_deploy_header': 'id=addModal', 'Popup_action': "css=[class='text-left']", 'Popup_audience': "css=[class='popup_list']&gt;li", 'Popup_cnfrm_btn': 'id=deployCampaign', 'Popup_cncl_btn': "css=[class='btn-default btn-dft ml-3']", 'Result_page_header': "css=[class='flex-container']&gt;div&gt;div&gt;span", 'Result_page_mailchimp': "css=[class='title_bar']", 'Result_page_audience': 'id=segmentchannelDownload', 'Result_page_Deploy': "css=[class='title_with_bar']&gt;div&gt;span", 'Result_page_Status': "css=[class='title_with_bar']&gt;div&gt;h5", 'Result_audience_help': "css=[class='p-small ng-star-inserted']", 'Result_XYaxis_txt': "css=[class='highcharts-axis-title']", 'Result_performance': 'id=campaign-performance', 'Result_segment': 'id=segment-revenue', 'Result_after_segment': "(//*[@id='segment-revenue'])[2]", 'Result_total': 'id=total-revenue', 'Result_after_total': "(//*[@class='title-second greyaa'])[4]", 'Result_subtitle': "css=[class='rev_box ng-star-inserted']&gt;div&gt;span", 'Result_Date': "css=[id='result-start-date']&gt;div&gt;h5", 'Result_Rate': "css=[id='result-conversion-rate']&gt;div&gt;h5", 'Result_budget': "css=[id='result-budget']&gt;div&gt;h5", 'refresh_icon': 'id=serviceDataRefresh', 'Total_sub_pendo': 'id=pendo-image-badge-4696c530', 'Audience_exp_btn': 'id=CMCsegmentchannelExpandSection', 'Audience_After_exp_btn': "(//*[@id='Campaign-Segmentchannel-ExpandSection'])[2]", 'Audience_dwnld_btn': 'id=CMCsegmentchannelDownload', 'Audience_After_dwnld_btn': 'id=Campaign-Segmentchannel-Download', 'Subscriber_exp_btn': "(//*[@id='CMCsegmentchannelExpandSection'])[2]", 'Subscriber_After_exp_btn': 'id=segmentchannelExpandSectionrev', 'Subscriber_dwnld_btn': "(//*[@id='CMCsegmentchannelDownload'])[2]", 'Subscriber_After_dwnld_btn': 'id=segmentchannelDownloadrev', 'SLH_Active_name_budget': 'css=tr&gt;td&gt;div&gt;span', 'SLH_triggered': "css=[title='Triggered']", 'SLH_Segment': "css=[title='Service Limit Hit']", 'SLH_Channel_disabled': "css=[title='Channel'][disabled='true']", 'SLH_Deploy_disabled': "css=[title='Deploy'][disabled='true']", 'SLH_Paused': "css=[title='Paused']", 'SLH_UnPause_header': 'id=title-unpause-campaign', 'Unpause_help_txt': "css=[class='ccl-form-labe']", 'Unpause_cnfrm_btn': 'id=BtnUnpauseCampaign', 'Unpause_cancel_btn': 'id=BtnCancelUnpauseCampaign'}}}</msg>
+<status status="PASS" starttime="20230414 16:23:19.507" endtime="20230414 16:23:19.507"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:19.474" endtime="20230414 16:23:19.507"/>
+</kw>
+<kw name="Parsing test Data Config for Stage/Dev" library="ConfigParserKeywords">
+<kw name="Call Method" library="BuiltIn">
+<var>${Url}</var>
+<arg>${ObjconfigReader}</arg>
+<arg>environment</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20230414 16:23:19.514" level="INFO">${Url} = Dev</msg>
+<status status="PASS" starttime="20230414 16:23:19.507" endtime="20230414 16:23:19.514"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Url}' == 'Stage'</arg>
+<arg>Run Keyword</arg>
+<arg>Parsing test data config</arg>
+<arg>ELSE IF</arg>
+<arg>'${Url}' == 'Dev'</arg>
+<arg>Run Keyword</arg>
+<arg>Parsing Dev test data config</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Parsing Dev test data config</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Parsing Dev test data config" library="ConfigParserKeywords">
+<kw name="Set Log Level" library="BuiltIn">
+<arg>NONE</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20230414 16:23:19.514" endtime="20230414 16:23:19.514"/>
+</kw>
+<kw name="Parse Yaml" library="config_parser">
+<var>${test_data_config}</var>
+<arg>C:\\Users\\Kathir\\Documents\\GitHub-23.2\\CMC-Robotframework-23.2${/}configure${/}env${/}dev.yml</arg>
+<doc>This function will parse the yaml file and return the object
+:param filename: the yaml file to be parsed</doc>
+<status status="PASS" starttime="20230414 16:23:19.514" endtime="20230414 16:23:19.522"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20230414 16:23:19.522" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230414 16:23:19.522" endtime="20230414 16:23:19.522"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${test_data_config}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230414 16:23:19.538" level="INFO">${test_data_config} = {'env': {'Product_URL': 'http://ec2-15-207-110-240.ap-south-1.compute.amazonaws.com:7070/login', 'api_url': 'https://dev.api.calix.ai', 'login': {'username': 'test1', 'password': 'test123'}, 'Home': {...</msg>
+<status status="PASS" starttime="20230414 16:23:19.522" endtime="20230414 16:23:19.538"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${test_data_config}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230414 16:23:19.538" level="INFO">{'env': {'Product_URL': 'http://ec2-15-207-110-240.ap-south-1.compute.amazonaws.com:7070/login', 'api_url': 'https://dev.api.calix.ai', 'login': {'username': 'test1', 'password': 'test123'}, 'Home': {'Subscriber_name': 'OneCloud68'}, 'Campaigns': {'Segments_list': {'globVar_segment1': 'Casual users', 'globVar_segment2': 'ExperienceIQ', 'globVar_segment3': 'ProtectIQ', 'globVar_segment4': 'Streamer', 'globVar_segment5': 'Camera', 'globVar_Retentn_segment1': 'Test 495 TS', 'globVar_Retentn_segment2': 'Test 495 TS', 'globVar_Retentn_segment3': 'Test 495 TS', 'globVar_Retentn_segment4': 'Test 495 TS', 'globVar_Retentn_segment5': 'Test 495 TS', 'globVar_Acquistn_segment1': 'Look-alike Streamer', 'globVar_Acquistn_segment2': 'Look-alike Streamer', 'globVar_Acquistn_segment3': 'Look-alike Gamers', 'globVar_upsell_savedSeg1': 'test', 'globVar_retention_savedSeg1': 'Testing'}, 'Triggered_campaign': {'Servicelimit_name': 'Service Limit Hits', 'Pause_help_txt': 'Pausing this campaign will prevent any messages from going out. Pausing email campaigns may take up to 24 hours.', 'Pause_txt': 'Pause Campaign', 'Cancel_txt': 'Cancel', 'Delete_help_txt': 'Are you sure you want to delete this campaign? This cannot be undone.', 'Delete_txt': 'Delete Campaign', 'Draft_txt': 'Draft', 'Instance_txt': 'Instances per 30 Days to Trigger *', 'Resend_txt': 'Do Not Resend For (Days) *', 'Budget_txt': 'Budget ($)', 'Target_txt': 'Conversion Target (%)', 'Start_txt': 'Start *', 'End_txt': 'End', 'Instance_Input': 35, 'Resend_Input': 10, 'Instance_Active_Input': 25, 'Resend_Active_Input': 5, 'Instance_Pause_Input': 45, 'Resend_Pause_Input': 9, 'Budget_Input': 465, 'Target_Input': 75, 'Save_cmp_txt': 'Save Campaign', 'Next_txt': 'Next', 'Previous_txt': 'Previous', 'Channel_txt': 'Channel', 'Segment_txt': 'Segment Size', 'Includes_txt': 'Includes in Channel', 'Description_txt': 'Description', 'Description_exp_txt': 'Sync subscriber information to Mailchimp audience list', 'Servicelimit_seg_name': 'Service Limit Hit', 'mailchimp_headerTxt': '1. Mailchimp', 'mailchimp_helpTxt': 'Service Limit Hit will be deployed to Mailchimp when you click "Deploy Campaign".', 'Note_helpTxt': 'Note : Do not Deploy unless you have already created the campaign in Mailchimp', 'ECB_helpTxt': 'Electronic Content Builder can help you to design your collateral for use in Mailchimp.', 'Deploy_txt': 'Deploy Campaign', 'Deploy_help_txt': 'The following action will be executed', 'Deploy_audience_txt': 'Audience data will be sent daily to Mailchimp', 'Result_audience_txt': 'Audience (Last Sent)', 'Result_date_txt': 'Start Date', 'Result_rate_txt': 'Conversion Rate', 'Result_Budget_txt': 'Budget', 'Result_Deploy': 'Deployment Status', 'Active_txt': 'Active', 'Audience_dis_txt': 'Audience Distribution', 'Audience_help_txt': 'Cumulative Audience Members Included in Selected Channels', 'Audience_channel_txt': 'Channel(s)', 'Segment_mem_txt': 'Segment Members', 'Subscriber_chart_txt': 'Subscribers', 'Result_mail_txt': 'Mailchimp', 'Result_Performance_txt': 'Campaign Performance', 'Result_Size_txt': 'Campaign Audience Size', 'Result_Total_txt': 'Total Subscribers', 'Result_Daily_txt': 'Daily Campaign Audience', 'Active_budget_txt': '$465', 'Trigger_txt': 'Triggered', 'Paused_txt': 'Paused', 'Unpause_header_txt': 'Unpause Campaign', 'Unpause_help_txt': 'Unpausing this campaign will cause it to resuming sending messages. Unpausing email campaigns may take up to 24 hours.'}}}}</msg>
+<status status="PASS" starttime="20230414 16:23:19.538" endtime="20230414 16:23:19.538"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:19.514" endtime="20230414 16:23:19.538"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:19.514" endtime="20230414 16:23:19.538"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:19.514" endtime="20230414 16:23:19.538"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:19.507" endtime="20230414 16:23:19.538"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:19.474" endtime="20230414 16:23:19.538"/>
+</kw>
+<kw name="Launch the Application and navigate to cmc" library="LandingPage">
+<doc>This should Navigate to Marketing page</doc>
+<kw name="Launch the Browser" library="LandingPage">
+<doc>To Launch the Browser and maximize the Window Size</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230414 16:23:19.538" level="INFO">Opening browser 'headlesschrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20230414 16:23:19.538" endtime="20230414 16:23:20.724"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230414 16:23:20.724" endtime="20230414 16:23:20.835"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>${1440}</arg>
+<arg>${900}</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20230414 16:23:20.835" endtime="20230414 16:23:21.131"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:19.538" endtime="20230414 16:23:21.132"/>
+</kw>
+<kw name="Initialize configuration parameters" library="CommonWrapper">
+<doc>It will Initialize the Configuration file for locators and testdata's for both dev and stage</doc>
+<kw name="Parsing locators information" library="ConfigParserKeywords">
+<kw name="Set Log Level" library="BuiltIn">
+<arg>NONE</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20230414 16:23:21.132" endtime="20230414 16:23:21.132"/>
+</kw>
+<kw name="Parse Yaml" library="config_parser">
+<var>${locators_params}</var>
+<arg>C:\\Users\\Kathir\\Documents\\GitHub-23.2\\CMC-Robotframework-23.2${/}Configure${/}Variables${/}Locatorparams.yml</arg>
+<doc>This function will parse the yaml file and return the object
+:param filename: the yaml file to be parsed</doc>
+<status status="PASS" starttime="20230414 16:23:21.132" endtime="20230414 16:23:21.143"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20230414 16:23:21.143" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230414 16:23:21.143" endtime="20230414 16:23:21.143"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${locators_params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230414 16:23:21.143" level="INFO">${locators_params} = {'Home': {'Thoughtspot_Insights': {'Insights': "//*[@class='ng-star-inserted']//*[contains(text(),'Insights')]/parent::div//*[@id='thoughtspot_insight_board']", 'Subscribers_thoughtspot': "//*[@class=...</msg>
+<status status="PASS" starttime="20230414 16:23:21.143" endtime="20230414 16:23:21.143"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${locators_params}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230414 16:23:21.159" level="INFO">{'Home': {'Thoughtspot_Insights': {'Insights': "//*[@class='ng-star-inserted']//*[contains(text(),'Insights')]/parent::div//*[@id='thoughtspot_insight_board']", 'Subscribers_thoughtspot': "//*[@class='bk-title-section']//*[contains(text(),'Subscribers')]", 'Average_fee': "//*[@class='bk-title-section']//*[contains(text(),'Average Attainablefee')]", 'Thoughtspot_logo': "//*[@class='bk-ts-powered-footer-logo']//*[@src='/resources/img/logo/TS-PoweredBy-Black.svg']"}}, 'Campaigns': {'Triggered_campaign': {'Campaign_search': "css=[placeholder='Search']", 'Pause_btn_show': "css=[class='d-inline-flex show']&gt;a&gt;[src='../../../../assets/img/ic_controls_pause.svg']", 'Pause_btn_hide': "css=[class='d-inline-flex hide']&gt;a&gt;[src='../../../../assets/img/ic_controls_pause.svg']", 'Edit_btn': "css=[class='d-inline-flex']&gt;span&gt;[class='fas fa-pencil-alt']", 'Play_btn_show': "css=[class='d-inline-flex show']&gt;a&gt;[src='../../../../assets/img/ic_controls_play.svg']", 'Play_btn_hide': "css=[class='d-inline-flex hide']&gt;a&gt;[src='../../../../assets/img/ic_controls_play.svg']", 'Delete_btn': "css=[title='Delete']&gt;[class='mr-0 primary fas fa-trash-alt']", 'Popup_pause_txt': 'id=title-pause-campaign', 'Popup_pausehelp_txt': "css=[class='ccl-form-labe']", 'Popup_pause_btn': 'id=BtnPauseCampaign', 'Popup_cancel_btn': 'id=BtnCancelPauseCampaign', 'Popup_close_btn': "css=[class='close']&gt;span", 'Delete_header': 'id=title-delete-campaign', 'Delete_help_txt': "css=[class='ccl-form-label pr-2']", 'Delete_cnfrm_btn': 'id=btnDeleteCampaign', 'Delete_cancel_btn': 'id=btnCancelDeleteCampaign', 'Draft_status_txt': "css=tr[class='odd']&gt;:nth-child(2)&gt;div", 'Define_Header_path': "css=[class^='col-sm-12 col-form-label']", 'Instance_Input_field': 'id=campaign-event', 'Resend_Input_field': 'id=campaign-trigger', 'Budget_Input_field': 'id=campaign-budget', 'Target_Input_field': 'id=campaign-target', 'Start_Input_field': "css=[placeholder='Select Start Date']", 'testData_highLightedDate': "//span[contains(@class,'highlight')]", 'End_Input_field': "css=[id='campaign-date'][placeholder='Indefinite (May Be Paused)']", 'Define_cmp_name': "css=[title='Service Limit Hits']", 'Draft_Status': "css=[title='Draft']", 'Active_Status': "css=[title='Active']", 'Close_btn': "css=[src='assets/img/ic_removeall.svg']", 'Next_btn': "css=[class='btn-arrow btn-arr-nxt primary ng-star-inserted']", 'Previous_btn': "css=[class='btn-arrow btn-arr-prev btn-grey ng-star-inserted']", 'Save_cmp_btn': "css=[class='btn-default btn-dft m-w100p ng-star-inserted']", 'All_checkbox': 'id=headerCheckBox', 'Mailchimp_checkbox': 'id=mobilechannelCheckBox', 'Channel_header': 'css=thead&gt;tr&gt;th', 'Description_exp': "css=[class='ng-star-inserted']&gt;:nth-child(5)", 'Mailchimp_header': 'id=deploy-mailchimp', 'Segment_help_path': "css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']&gt;:nth-child(2)", 'Note_path': "css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']&gt;:nth-child(3)", 'ECB_path': "css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']&gt;:nth-child(4)", 'Deploy_btn': "css=[class='deploy-btn ng-star-inserted']", 'Popup_deploy_header': 'id=addModal', 'Popup_action': "css=[class='text-left']", 'Popup_audience': "css=[class='popup_list']&gt;li", 'Popup_cnfrm_btn': 'id=deployCampaign', 'Popup_cncl_btn': "css=[class='btn-default btn-dft ml-3']", 'Result_page_header': "css=[class='flex-container']&gt;div&gt;div&gt;span", 'Result_page_mailchimp': "css=[class='title_bar']", 'Result_page_audience': 'id=segmentchannelDownload', 'Result_page_Deploy': "css=[class='title_with_bar']&gt;div&gt;span", 'Result_page_Status': "css=[class='title_with_bar']&gt;div&gt;h5", 'Result_audience_help': "css=[class='p-small ng-star-inserted']", 'Result_XYaxis_txt': "css=[class='highcharts-axis-title']", 'Result_performance': 'id=campaign-performance', 'Result_segment': 'id=segment-revenue', 'Result_after_segment': "(//*[@id='segment-revenue'])[2]", 'Result_total': 'id=total-revenue', 'Result_after_total': "(//*[@class='title-second greyaa'])[4]", 'Result_subtitle': "css=[class='rev_box ng-star-inserted']&gt;div&gt;span", 'Result_Date': "css=[id='result-start-date']&gt;div&gt;h5", 'Result_Rate': "css=[id='result-conversion-rate']&gt;div&gt;h5", 'Result_budget': "css=[id='result-budget']&gt;div&gt;h5", 'refresh_icon': 'id=serviceDataRefresh', 'Total_sub_pendo': 'id=pendo-image-badge-4696c530', 'Audience_exp_btn': 'id=CMCsegmentchannelExpandSection', 'Audience_After_exp_btn': "(//*[@id='Campaign-Segmentchannel-ExpandSection'])[2]", 'Audience_dwnld_btn': 'id=CMCsegmentchannelDownload', 'Audience_After_dwnld_btn': 'id=Campaign-Segmentchannel-Download', 'Subscriber_exp_btn': "(//*[@id='CMCsegmentchannelExpandSection'])[2]", 'Subscriber_After_exp_btn': 'id=segmentchannelExpandSectionrev', 'Subscriber_dwnld_btn': "(//*[@id='CMCsegmentchannelDownload'])[2]", 'Subscriber_After_dwnld_btn': 'id=segmentchannelDownloadrev', 'SLH_Active_name_budget': 'css=tr&gt;td&gt;div&gt;span', 'SLH_triggered': "css=[title='Triggered']", 'SLH_Segment': "css=[title='Service Limit Hit']", 'SLH_Channel_disabled': "css=[title='Channel'][disabled='true']", 'SLH_Deploy_disabled': "css=[title='Deploy'][disabled='true']", 'SLH_Paused': "css=[title='Paused']", 'SLH_UnPause_header': 'id=title-unpause-campaign', 'Unpause_help_txt': "css=[class='ccl-form-labe']", 'Unpause_cnfrm_btn': 'id=BtnUnpauseCampaign', 'Unpause_cancel_btn': 'id=BtnCancelUnpauseCampaign'}}}</msg>
+<status status="PASS" starttime="20230414 16:23:21.159" endtime="20230414 16:23:21.159"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:21.132" endtime="20230414 16:23:21.159"/>
+</kw>
+<kw name="Parsing test Data Config for Stage/Dev" library="ConfigParserKeywords">
+<kw name="Call Method" library="BuiltIn">
+<var>${Url}</var>
+<arg>${ObjconfigReader}</arg>
+<arg>environment</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20230414 16:23:21.159" level="INFO">${Url} = Dev</msg>
+<status status="PASS" starttime="20230414 16:23:21.159" endtime="20230414 16:23:21.159"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Url}' == 'Stage'</arg>
+<arg>Run Keyword</arg>
+<arg>Parsing test data config</arg>
+<arg>ELSE IF</arg>
+<arg>'${Url}' == 'Dev'</arg>
+<arg>Run Keyword</arg>
+<arg>Parsing Dev test data config</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Parsing Dev test data config</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Parsing Dev test data config" library="ConfigParserKeywords">
+<kw name="Set Log Level" library="BuiltIn">
+<arg>NONE</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20230414 16:23:21.159" endtime="20230414 16:23:21.159"/>
+</kw>
+<kw name="Parse Yaml" library="config_parser">
+<var>${test_data_config}</var>
+<arg>C:\\Users\\Kathir\\Documents\\GitHub-23.2\\CMC-Robotframework-23.2${/}configure${/}env${/}dev.yml</arg>
+<doc>This function will parse the yaml file and return the object
+:param filename: the yaml file to be parsed</doc>
+<status status="PASS" starttime="20230414 16:23:21.159" endtime="20230414 16:23:21.181"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20230414 16:23:21.181" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230414 16:23:21.181" endtime="20230414 16:23:21.181"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${test_data_config}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230414 16:23:21.181" level="INFO">${test_data_config} = {'env': {'Product_URL': 'http://ec2-15-207-110-240.ap-south-1.compute.amazonaws.com:7070/login', 'api_url': 'https://dev.api.calix.ai', 'login': {'username': 'test1', 'password': 'test123'}, 'Home': {...</msg>
+<status status="PASS" starttime="20230414 16:23:21.181" endtime="20230414 16:23:21.181"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${test_data_config}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230414 16:23:21.181" level="INFO">{'env': {'Product_URL': 'http://ec2-15-207-110-240.ap-south-1.compute.amazonaws.com:7070/login', 'api_url': 'https://dev.api.calix.ai', 'login': {'username': 'test1', 'password': 'test123'}, 'Home': {'Subscriber_name': 'OneCloud68'}, 'Campaigns': {'Segments_list': {'globVar_segment1': 'Casual users', 'globVar_segment2': 'ExperienceIQ', 'globVar_segment3': 'ProtectIQ', 'globVar_segment4': 'Streamer', 'globVar_segment5': 'Camera', 'globVar_Retentn_segment1': 'Test 495 TS', 'globVar_Retentn_segment2': 'Test 495 TS', 'globVar_Retentn_segment3': 'Test 495 TS', 'globVar_Retentn_segment4': 'Test 495 TS', 'globVar_Retentn_segment5': 'Test 495 TS', 'globVar_Acquistn_segment1': 'Look-alike Streamer', 'globVar_Acquistn_segment2': 'Look-alike Streamer', 'globVar_Acquistn_segment3': 'Look-alike Gamers', 'globVar_upsell_savedSeg1': 'test', 'globVar_retention_savedSeg1': 'Testing'}, 'Triggered_campaign': {'Servicelimit_name': 'Service Limit Hits', 'Pause_help_txt': 'Pausing this campaign will prevent any messages from going out. Pausing email campaigns may take up to 24 hours.', 'Pause_txt': 'Pause Campaign', 'Cancel_txt': 'Cancel', 'Delete_help_txt': 'Are you sure you want to delete this campaign? This cannot be undone.', 'Delete_txt': 'Delete Campaign', 'Draft_txt': 'Draft', 'Instance_txt': 'Instances per 30 Days to Trigger *', 'Resend_txt': 'Do Not Resend For (Days) *', 'Budget_txt': 'Budget ($)', 'Target_txt': 'Conversion Target (%)', 'Start_txt': 'Start *', 'End_txt': 'End', 'Instance_Input': 35, 'Resend_Input': 10, 'Instance_Active_Input': 25, 'Resend_Active_Input': 5, 'Instance_Pause_Input': 45, 'Resend_Pause_Input': 9, 'Budget_Input': 465, 'Target_Input': 75, 'Save_cmp_txt': 'Save Campaign', 'Next_txt': 'Next', 'Previous_txt': 'Previous', 'Channel_txt': 'Channel', 'Segment_txt': 'Segment Size', 'Includes_txt': 'Includes in Channel', 'Description_txt': 'Description', 'Description_exp_txt': 'Sync subscriber information to Mailchimp audience list', 'Servicelimit_seg_name': 'Service Limit Hit', 'mailchimp_headerTxt': '1. Mailchimp', 'mailchimp_helpTxt': 'Service Limit Hit will be deployed to Mailchimp when you click "Deploy Campaign".', 'Note_helpTxt': 'Note : Do not Deploy unless you have already created the campaign in Mailchimp', 'ECB_helpTxt': 'Electronic Content Builder can help you to design your collateral for use in Mailchimp.', 'Deploy_txt': 'Deploy Campaign', 'Deploy_help_txt': 'The following action will be executed', 'Deploy_audience_txt': 'Audience data will be sent daily to Mailchimp', 'Result_audience_txt': 'Audience (Last Sent)', 'Result_date_txt': 'Start Date', 'Result_rate_txt': 'Conversion Rate', 'Result_Budget_txt': 'Budget', 'Result_Deploy': 'Deployment Status', 'Active_txt': 'Active', 'Audience_dis_txt': 'Audience Distribution', 'Audience_help_txt': 'Cumulative Audience Members Included in Selected Channels', 'Audience_channel_txt': 'Channel(s)', 'Segment_mem_txt': 'Segment Members', 'Subscriber_chart_txt': 'Subscribers', 'Result_mail_txt': 'Mailchimp', 'Result_Performance_txt': 'Campaign Performance', 'Result_Size_txt': 'Campaign Audience Size', 'Result_Total_txt': 'Total Subscribers', 'Result_Daily_txt': 'Daily Campaign Audience', 'Active_budget_txt': '$465', 'Trigger_txt': 'Triggered', 'Paused_txt': 'Paused', 'Unpause_header_txt': 'Unpause Campaign', 'Unpause_help_txt': 'Unpausing this campaign will cause it to resuming sending messages. Unpausing email campaigns may take up to 24 hours.'}}}}</msg>
+<status status="PASS" starttime="20230414 16:23:21.181" endtime="20230414 16:23:21.181"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:21.159" endtime="20230414 16:23:21.181"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:21.159" endtime="20230414 16:23:21.181"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:21.159" endtime="20230414 16:23:21.181"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:21.159" endtime="20230414 16:23:21.181"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:21.132" endtime="20230414 16:23:21.181"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${Url}</var>
+<arg>${ObjconfigReader}</arg>
+<arg>environment</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20230414 16:23:21.181" level="INFO">${Url} = Dev</msg>
+<status status="PASS" starttime="20230414 16:23:21.181" endtime="20230414 16:23:21.181"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Url}' == 'Dev'</arg>
+<arg>Dev environment validation</arg>
+<arg>ELSE IF</arg>
+<arg>'${Url}' == 'Stage'</arg>
+<arg>Stage environment validation</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Dev environment validation" library="LandingPage">
+<doc>Use this Keyword to run the code in Developer Environment</doc>
+<kw name="Set Selenium Timeout" library="SeleniumLibrary">
+<arg>20 seconds</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:21.181" endtime="20230414 16:23:21.191"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<arg>20 seconds</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230414 16:23:21.191" endtime="20230414 16:23:21.191"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${test_data_config['env']}[Product_URL]</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20230414 16:23:21.231" level="INFO">Opening url 'http://ec2-15-207-110-240.ap-south-1.compute.amazonaws.com:7070/login'</msg>
+<status status="PASS" starttime="20230414 16:23:21.191" endtime="20230414 16:23:27.500"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:32.513" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230414 16:23:27.500" endtime="20230414 16:23:32.513"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>running Dev..</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230414 16:23:32.513" endtime="20230414 16:23:32.513"/>
+</kw>
+<kw name="Enter the Value Untill Visible" library="CommonWrapper">
+<arg>${username_txtFiled}</arg>
+<arg>${test_data_config['env']['login']}[username]</arg>
+<doc>Wait until element is visible and then Enter the Value</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:32.545" endtime="20230414 16:23:32.545"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230414 16:23:32.545" endtime="20230414 16:23:32.592"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>CTRl+a+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230414 16:23:32.592" level="INFO">Sending key(s) ('CTRl+a+BACKSPACE',) to id=username element.</msg>
+<msg timestamp="20230414 16:23:32.899" level="INFO">Sending keys CTRl</msg>
+<msg timestamp="20230414 16:23:32.899" level="INFO">Sending key a</msg>
+<msg timestamp="20230414 16:23:32.899" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230414 16:23:32.899" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230414 16:23:32.592" endtime="20230414 16:23:32.946"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TextValue}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:32.946" level="INFO">Typing text 'test1' into text field 'id=username'.</msg>
+<status status="PASS" starttime="20230414 16:23:32.946" endtime="20230414 16:23:33.074"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:32.513" endtime="20230414 16:23:33.074"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:34.078" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230414 16:23:33.074" endtime="20230414 16:23:34.078"/>
+</kw>
+<kw name="Click Element Until Visible" library="CommonWrapper">
+<arg>(//button)[1]</arg>
+<doc>Wait until element is visible and then click element</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:34.078" endtime="20230414 16:23:34.078"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:23:34.078" endtime="20230414 16:23:34.100"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:34.101" level="INFO">Clicking element '(//button)[1]'.</msg>
+<status status="PASS" starttime="20230414 16:23:34.101" endtime="20230414 16:23:34.170"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:35.177" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230414 16:23:34.170" endtime="20230414 16:23:35.177"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:34.078" endtime="20230414 16:23:35.177"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>password</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230414 16:23:35.177" endtime="20230414 16:23:35.858"/>
+</kw>
+<kw name="Enter the Value Untill Visible" library="CommonWrapper">
+<arg>${password_txtField}</arg>
+<arg>${test_data_config['env']['login']}[password]</arg>
+<doc>Wait until element is visible and then Enter the Value</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:35.899" endtime="20230414 16:23:35.899"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230414 16:23:35.899" endtime="20230414 16:23:35.938"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>CTRl+a+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230414 16:23:35.938" level="INFO">Sending key(s) ('CTRl+a+BACKSPACE',) to id=password element.</msg>
+<msg timestamp="20230414 16:23:36.255" level="INFO">Sending keys CTRl</msg>
+<msg timestamp="20230414 16:23:36.255" level="INFO">Sending key a</msg>
+<msg timestamp="20230414 16:23:36.255" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230414 16:23:36.255" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230414 16:23:35.938" endtime="20230414 16:23:36.294"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>${TextValue}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:36.296" level="INFO">Typing text 'test123' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20230414 16:23:36.294" endtime="20230414 16:23:36.443"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:35.859" endtime="20230414 16:23:36.443"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Login</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:23:36.444" endtime="20230414 16:23:36.481"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:37.487" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230414 16:23:36.482" endtime="20230414 16:23:37.487"/>
+</kw>
+<kw name="Click Element Until Visible" library="CommonWrapper">
+<arg>${Loing}</arg>
+<doc>Wait until element is visible and then click element</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:37.487" endtime="20230414 16:23:37.487"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:23:37.487" endtime="20230414 16:23:37.503"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:37.505" level="INFO">Clicking element 'xpath=(//button)[1]'.</msg>
+<status status="PASS" starttime="20230414 16:23:37.505" endtime="20230414 16:23:37.552"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:38.555" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230414 16:23:37.552" endtime="20230414 16:23:38.555"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:37.487" endtime="20230414 16:23:38.555"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:43.561" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230414 16:23:38.555" endtime="20230414 16:23:43.561"/>
+</kw>
+<kw name="Capture the Screen" library="CommonWrapper">
+<arg>Dashboard</arg>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:43.565" endtime="20230414 16:23:43.565"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:45.572" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230414 16:23:43.565" endtime="20230414 16:23:45.573"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${ScreenName}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230414 16:23:45.732" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Dashboard.png"&gt;&lt;img src="Dashboard.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230414 16:23:45.573" endtime="20230414 16:23:45.732"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:43.561" endtime="20230414 16:23:45.732"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:21.181" endtime="20230414 16:23:45.732"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:21.181" endtime="20230414 16:23:45.732"/>
+</kw>
+<kw name="click on side menu icon" library="BasicCheckin">
+<doc>Click the Menu category dropdown</doc>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:50.744" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230414 16:23:45.741" endtime="20230414 16:23:50.744"/>
+</kw>
+<kw name="Click Element Until Visible" library="CommonWrapper">
+<arg>${Menu_Dropdown}</arg>
+<doc>Wait until element is visible and then click element</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:50.748" endtime="20230414 16:23:50.748"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:23:50.748" endtime="20230414 16:23:50.801"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:50.801" level="INFO">Clicking element '//*[@id='dropdownPeriod']'.</msg>
+<status status="PASS" starttime="20230414 16:23:50.801" endtime="20230414 16:23:50.879"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:51.892" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230414 16:23:50.879" endtime="20230414 16:23:51.892"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:50.747" endtime="20230414 16:23:51.892"/>
+</kw>
+<kw name="Capture the Screen" library="CommonWrapper">
+<arg>ProjectTitle</arg>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:51.892" endtime="20230414 16:23:51.892"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:53.906" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230414 16:23:51.892" endtime="20230414 16:23:53.906"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${ScreenName}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230414 16:23:54.105" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ProjectTitle.png"&gt;&lt;img src="ProjectTitle.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230414 16:23:53.906" endtime="20230414 16:23:54.105"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:51.892" endtime="20230414 16:23:54.105"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:45.740" endtime="20230414 16:23:54.105"/>
+</kw>
+<kw name="verify Side Menu List" library="BasicCheckin">
+<doc>Verify the Menu category</doc>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>@{getSideMenuList}</var>
+<arg>${Dropdownlist}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20230414 16:23:54.134" level="INFO">@{getSideMenuList} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="29b6434fa3b121c561651c7ce4dbbf42", element="10f8da9a-3bd9-4bf5-b3e1-6c17507c43b5")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (ses...</msg>
+<status status="PASS" starttime="20230414 16:23:54.117" endtime="20230414 16:23:54.134"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{menuList}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230414 16:23:54.134" level="INFO">@{menuList} = [ ]</msg>
+<status status="PASS" starttime="20230414 16:23:54.134" endtime="20230414 16:23:54.134"/>
+</kw>
+<for flavor="IN">
+<var>${sideMenuList}</var>
+<value>@{getSideMenuList}</value>
+<iter>
+<var name="${sideMenuList}">&lt;selenium.webdriver.remote.webelement.WebElement (session="29b6434fa3b121c561651c7ce4dbbf42", element="10f8da9a-3bd9-4bf5-b3e1-6c17507c43b5")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Text}</var>
+<arg>${sideMenuList}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:54.168" level="INFO">${Text} = Marketing</msg>
+<status status="PASS" starttime="20230414 16:23:54.134" endtime="20230414 16:23:54.168"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${menuList}</arg>
+<arg>${Text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230414 16:23:54.168" endtime="20230414 16:23:54.168"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:54.134" endtime="20230414 16:23:54.168"/>
+</iter>
+<iter>
+<var name="${sideMenuList}">&lt;selenium.webdriver.remote.webelement.WebElement (session="29b6434fa3b121c561651c7ce4dbbf42", element="ed5e3bdf-e6d0-43a4-a5c0-0d6c21f823a3")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Text}</var>
+<arg>${sideMenuList}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:54.192" level="INFO">${Text} = Operations</msg>
+<status status="PASS" starttime="20230414 16:23:54.168" endtime="20230414 16:23:54.192"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${menuList}</arg>
+<arg>${Text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230414 16:23:54.193" endtime="20230414 16:23:54.193"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:54.168" endtime="20230414 16:23:54.193"/>
+</iter>
+<iter>
+<var name="${sideMenuList}">&lt;selenium.webdriver.remote.webelement.WebElement (session="29b6434fa3b121c561651c7ce4dbbf42", element="71d365a4-5c2a-485c-a609-43343a801127")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Text}</var>
+<arg>${sideMenuList}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:54.216" level="INFO">${Text} = Support</msg>
+<status status="PASS" starttime="20230414 16:23:54.193" endtime="20230414 16:23:54.216"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${menuList}</arg>
+<arg>${Text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230414 16:23:54.216" endtime="20230414 16:23:54.216"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:54.193" endtime="20230414 16:23:54.216"/>
+</iter>
+<iter>
+<var name="${sideMenuList}">&lt;selenium.webdriver.remote.webelement.WebElement (session="29b6434fa3b121c561651c7ce4dbbf42", element="230b8501-d2d1-4993-9148-8f1c1ac23c45")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Text}</var>
+<arg>${sideMenuList}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:54.240" level="INFO">${Text} = Deployment</msg>
+<status status="PASS" starttime="20230414 16:23:54.216" endtime="20230414 16:23:54.240"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${menuList}</arg>
+<arg>${Text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20230414 16:23:54.240" endtime="20230414 16:23:54.240"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:54.216" endtime="20230414 16:23:54.240"/>
+</iter>
+<status status="PASS" starttime="20230414 16:23:54.134" endtime="20230414 16:23:54.240"/>
+</for>
+<kw name="Log" library="BuiltIn">
+<arg>${menuList}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230414 16:23:54.240" level="INFO">['Marketing', 'Operations', 'Support', 'Deployment']</msg>
+<status status="PASS" starttime="20230414 16:23:54.240" endtime="20230414 16:23:54.240"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${sidemenu_Titlelist}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230414 16:23:54.240" level="INFO">['Marketing', 'Operations', 'Support', 'Deployment']</msg>
+<status status="PASS" starttime="20230414 16:23:54.240" endtime="20230414 16:23:54.240"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${menuList}</arg>
+<arg>${sidemenu_Titlelist}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230414 16:23:54.240" endtime="20230414 16:23:54.240"/>
+</kw>
+<kw name="Click Element Until Visible" library="CommonWrapper">
+<arg>${Menu_Dropdown}</arg>
+<doc>Wait until element is visible and then click element</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:23:54.245" endtime="20230414 16:23:54.245"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:23:54.245" endtime="20230414 16:23:54.255"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:23:54.261" level="INFO">Clicking element '//*[@id='dropdownPeriod']'.</msg>
+<status status="PASS" starttime="20230414 16:23:54.255" endtime="20230414 16:23:54.313"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:23:55.328" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230414 16:23:54.313" endtime="20230414 16:23:55.328"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:54.240" endtime="20230414 16:23:55.328"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:00.345" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230414 16:23:55.330" endtime="20230414 16:24:00.345"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:54.116" endtime="20230414 16:24:00.346"/>
+</kw>
+<kw name="go to marketing cloud" library="ExploreDataPO_subscriber">
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:05.358" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:00.347" endtime="20230414 16:24:05.358"/>
+</kw>
+<kw name="Capture the Screen" library="CommonWrapper">
+<arg>${homescreen}</arg>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:05.359" endtime="20230414 16:24:05.359"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:07.369" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:05.359" endtime="20230414 16:24:07.369"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${ScreenName}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230414 16:24:07.536" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="homeScreen.png"&gt;&lt;img src="homeScreen.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230414 16:24:07.369" endtime="20230414 16:24:07.536"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:05.359" endtime="20230414 16:24:07.536"/>
+</kw>
+<kw name="Click Element Until Enabled" library="CommonWrapper">
+<arg>${menu_iconBox}</arg>
+<doc>Wait until element is enabled and then click element</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:07.536" endtime="20230414 16:24:07.536"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230414 16:24:07.536" endtime="20230414 16:24:07.575"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:24:07.575" level="INFO">Clicking element '//*[@id="dropdownPeriod"]'.</msg>
+<status status="PASS" starttime="20230414 16:24:07.575" endtime="20230414 16:24:07.646"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:07.536" endtime="20230414 16:24:07.646"/>
+</kw>
+<kw name="Click Element Until Enabled" library="CommonWrapper">
+<arg>${marketingcloudbtn}</arg>
+<doc>Wait until element is enabled and then click element</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:07.654" endtime="20230414 16:24:07.654"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230414 16:24:07.654" endtime="20230414 16:24:07.757"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:24:07.757" level="INFO">Clicking element '//*[@id='menu-category']//*[contains(text(),'Marketing')]'.</msg>
+<status status="PASS" starttime="20230414 16:24:07.757" endtime="20230414 16:24:09.780"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:07.646" endtime="20230414 16:24:09.780"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:12.787" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:09.780" endtime="20230414 16:24:12.787"/>
+</kw>
+<kw name="Capture the Screen" library="CommonWrapper">
+<arg>${marketingcloudscreen}</arg>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:12.790" endtime="20230414 16:24:12.790"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:14.796" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:12.790" endtime="20230414 16:24:14.796"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${ScreenName}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230414 16:24:14.987" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="marketingCloudScreen.png"&gt;&lt;img src="marketingCloudScreen.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230414 16:24:14.797" endtime="20230414 16:24:14.987"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:12.788" endtime="20230414 16:24:14.987"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:00.347" endtime="20230414 16:24:14.987"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:19.538" endtime="20230414 16:24:14.987"/>
+</kw>
+<kw name="navigate to homescreen" library="homeScreenPO">
+<doc>Navigate to CMC-homepage</doc>
+<kw name="Click Element Until Enabled" library="CommonWrapper">
+<arg>${homebtn}</arg>
+<doc>Wait until element is enabled and then click element</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:14.992" endtime="20230414 16:24:14.992"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230414 16:24:14.992" endtime="20230414 16:24:15.029"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:24:15.033" level="INFO">Clicking element 'id=homeMarketingSection'.</msg>
+<status status="PASS" starttime="20230414 16:24:15.033" endtime="20230414 16:24:15.218"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:14.992" endtime="20230414 16:24:15.218"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>30</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:45.229" level="INFO">Slept 30 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:15.218" endtime="20230414 16:24:45.229"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:14.987" endtime="20230414 16:24:45.229"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:16.355" endtime="20230414 16:24:45.229"/>
+</kw>
+<test id="s1-t1" name="validate data in homescreen" line="12">
+<kw name="verify elements in homescreen" library="homeScreenPO">
+<doc>Validate the CMC-homepage</doc>
+<kw name="Verify page title for HomeScreen" library="PageTitleKeywords">
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Home- Marketing- Calix Cloud</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20230414 16:24:45.245" level="INFO">Page title is 'Home- Marketing- Calix Cloud'.</msg>
+<status status="PASS" starttime="20230414 16:24:45.229" endtime="20230414 16:24:45.245"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.229" endtime="20230414 16:24:45.245"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{multiTxt}</var>
+<arg>${home_insightstxt}</arg>
+<arg>${home_allsubscriberslabeltxt}</arg>
+<arg>${home_streamerlabeltxt}</arg>
+<arg>${home_gamerlabeltxt}</arg>
+<arg>${home_workfrmhomelabeltxt}</arg>
+<arg>${home_insights_acquisitionRateTxt}</arg>
+<arg>${home_insights_churnRate}</arg>
+<arg>${home_insights_ARPU}</arg>
+<arg>${home_insights_newSubsPerDay}</arg>
+<arg>${home_insights_past30daystxt}</arg>
+<arg>${home_segmentsheadertxt}</arg>
+<arg>${home_churntrendsheadertxt}</arg>
+<arg>${home_subscribersbysttheadertxt}</arg>
+<arg>${home_campaignstxt}</arg>
+<arg>${home_contactnumtxt}</arg>
+<arg>${ECB_name}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230414 16:24:45.246" level="INFO">@{multiTxt} = [ Insights | Subscribers | Streaming | Gaming | Work from Home | Acquisition Rate | Churn Rate | ARPU | New Subs (Past 30 Days) | Past 30 Days | Segments | Churn Trends | Service Tier &amp; Technology | C...</msg>
+<status status="PASS" starttime="20230414 16:24:45.246" endtime="20230414 16:24:45.246"/>
+</kw>
+<kw name="wait until page contains multiple text" library="CommonWrapper">
+<arg>@{multiTxt}</arg>
+<doc>Wait Until Page Contain multiple text</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:45.246" endtime="20230414 16:24:45.246"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{multi_text}</value>
+<iter>
+<var name="${element}">Insights</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.246" endtime="20230414 16:24:45.277"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.246" endtime="20230414 16:24:45.277"/>
+</iter>
+<iter>
+<var name="${element}">Subscribers</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.278" endtime="20230414 16:24:45.306"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.278" endtime="20230414 16:24:45.306"/>
+</iter>
+<iter>
+<var name="${element}">Streaming</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.306" endtime="20230414 16:24:45.325"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.306" endtime="20230414 16:24:45.325"/>
+</iter>
+<iter>
+<var name="${element}">Gaming</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.325" endtime="20230414 16:24:45.357"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.325" endtime="20230414 16:24:45.357"/>
+</iter>
+<iter>
+<var name="${element}">Work from Home</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.357" endtime="20230414 16:24:45.381"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.357" endtime="20230414 16:24:45.381"/>
+</iter>
+<iter>
+<var name="${element}">Acquisition Rate</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.381" endtime="20230414 16:24:45.405"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.381" endtime="20230414 16:24:45.405"/>
+</iter>
+<iter>
+<var name="${element}">Churn Rate</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.405" endtime="20230414 16:24:45.437"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.405" endtime="20230414 16:24:45.437"/>
+</iter>
+<iter>
+<var name="${element}">ARPU</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.437" endtime="20230414 16:24:45.461"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.437" endtime="20230414 16:24:45.461"/>
+</iter>
+<iter>
+<var name="${element}">New Subs (Past 30 Days)</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.461" endtime="20230414 16:24:45.484"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.461" endtime="20230414 16:24:45.484"/>
+</iter>
+<iter>
+<var name="${element}">Past 30 Days</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.484" endtime="20230414 16:24:45.508"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.484" endtime="20230414 16:24:45.508"/>
+</iter>
+<iter>
+<var name="${element}">Segments</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.508" endtime="20230414 16:24:45.531"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.508" endtime="20230414 16:24:45.533"/>
+</iter>
+<iter>
+<var name="${element}">Churn Trends</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.533" endtime="20230414 16:24:45.548"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.533" endtime="20230414 16:24:45.548"/>
+</iter>
+<iter>
+<var name="${element}">Service Tier &amp; Technology</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.548" endtime="20230414 16:24:45.578"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.548" endtime="20230414 16:24:45.578"/>
+</iter>
+<iter>
+<var name="${element}">Campaigns</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.578" endtime="20230414 16:24:45.595"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.578" endtime="20230414 16:24:45.595"/>
+</iter>
+<iter>
+<var name="${element}">1.877.766.3500</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.595" endtime="20230414 16:24:45.642"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.595" endtime="20230414 16:24:45.642"/>
+</iter>
+<iter>
+<var name="${element}">Electronic Content Builder</var>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.642" endtime="20230414 16:24:45.676"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.642" endtime="20230414 16:24:45.676"/>
+</iter>
+<status status="PASS" starttime="20230414 16:24:45.246" endtime="20230414 16:24:45.676"/>
+</for>
+<status status="PASS" starttime="20230414 16:24:45.246" endtime="20230414 16:24:45.676"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{elements}</var>
+<arg>${home_campaigns_newbtn}</arg>
+<arg>${home_churntrends_downloadbtn}</arg>
+<arg>${home_segments_newbtn}</arg>
+<arg>${ECB_namepath}</arg>
+<arg>${ECB_redirect_img}</arg>
+<arg>${ECB_redirecttoNew_btn}</arg>
+<arg>${home_subscribersbystt_downloadbtn}</arg>
+<arg>${home_subscribersbystt_fiberbtn}</arg>
+<arg>${searchfield}</arg>
+<arg>${home_searchbtn}</arg>
+<arg>${home_aboutbtnfooter}</arg>
+<arg>${home_contactbtnfooter}</arg>
+<arg>${home_t&amp;cbtnfooter}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230414 16:24:45.688" level="INFO">@{elements} = [ id=campaigns-new-btn | (//*[@class='btn-round btn-small-24 btn-grey btn-dload'])[4] | id=segments-new-btn | //*[contains(text(),'Electronic Content Builder')] | //*[contains(text(),'Electronic Conte...</msg>
+<status status="PASS" starttime="20230414 16:24:45.676" endtime="20230414 16:24:45.688"/>
+</kw>
+<kw name="Wait Until Page Contain Elements" library="CommonWrapper">
+<arg>@{elements}</arg>
+<doc>Wait Until Page Contain Elements</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:45.688" endtime="20230414 16:24:45.688"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{multi_element}</value>
+<iter>
+<var name="${element}">id=campaigns-new-btn</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.688" endtime="20230414 16:24:45.704"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.688" endtime="20230414 16:24:45.704"/>
+</iter>
+<iter>
+<var name="${element}">(//*[@class='btn-round btn-small-24 btn-grey btn-dload'])[4]</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.704" endtime="20230414 16:24:45.720"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.704" endtime="20230414 16:24:45.720"/>
+</iter>
+<iter>
+<var name="${element}">id=segments-new-btn</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.720" endtime="20230414 16:24:45.743"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.720" endtime="20230414 16:24:45.745"/>
+</iter>
+<iter>
+<var name="${element}">//*[contains(text(),'Electronic Content Builder')]</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.745" endtime="20230414 16:24:45.753"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.745" endtime="20230414 16:24:45.753"/>
+</iter>
+<iter>
+<var name="${element}">//*[contains(text(),'Electronic Content Builder')]//*[@src='./assets/img/Preview-icon.svg']</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.766" endtime="20230414 16:24:45.776"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.766" endtime="20230414 16:24:45.776"/>
+</iter>
+<iter>
+<var name="${element}">//*[@src='./assets/img/Preview-icon.svg']/parent::span/parent::a/parent::span/following-sibling::button</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.784" endtime="20230414 16:24:45.800"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.776" endtime="20230414 16:24:45.800"/>
+</iter>
+<iter>
+<var name="${element}">(//*[@class='btn-round btn-small-24 btn-grey btn-dload'])[1]</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.801" endtime="20230414 16:24:45.816"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.801" endtime="20230414 16:24:45.816"/>
+</iter>
+<iter>
+<var name="${element}">(//*[@class='highcharts-legend-item highcharts-column-series highcharts-color-0 highcharts-series-0'])[1]</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.818" endtime="20230414 16:24:45.837"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.818" endtime="20230414 16:24:45.837"/>
+</iter>
+<iter>
+<var name="${element}">id=search-input</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.837" endtime="20230414 16:24:45.855"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.837" endtime="20230414 16:24:45.855"/>
+</iter>
+<iter>
+<var name="${element}">id=search-btn</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.855" endtime="20230414 16:24:45.862"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.855" endtime="20230414 16:24:45.862"/>
+</iter>
+<iter>
+<var name="${element}">id=about-calix</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.874" endtime="20230414 16:24:45.891"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.874" endtime="20230414 16:24:45.891"/>
+</iter>
+<iter>
+<var name="${element}">id=contact-calix</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.891" endtime="20230414 16:24:45.899"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.891" endtime="20230414 16:24:45.909"/>
+</iter>
+<iter>
+<var name="${element}">id=terms-conditions</var>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:45.909" endtime="20230414 16:24:45.933"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.909" endtime="20230414 16:24:45.933"/>
+</iter>
+<status status="PASS" starttime="20230414 16:24:45.688" endtime="20230414 16:24:45.933"/>
+</for>
+<status status="PASS" starttime="20230414 16:24:45.688" endtime="20230414 16:24:45.934"/>
+</kw>
+<kw name="Capture the Screen" library="CommonWrapper">
+<arg>cmcHomescreen</arg>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:45.936" endtime="20230414 16:24:45.936"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:47.941" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:45.936" endtime="20230414 16:24:47.941"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${ScreenName}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230414 16:24:48.150" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="cmcHomescreen.png"&gt;&lt;img src="cmcHomescreen.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230414 16:24:47.943" endtime="20230414 16:24:48.150"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.934" endtime="20230414 16:24:48.150"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.scrollTo(0,document.body.scrollHeight)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20230414 16:24:48.150" level="INFO">Executing JavaScript:
+window.scrollTo(0,document.body.scrollHeight)
+Without any arguments.</msg>
+<status status="PASS" starttime="20230414 16:24:48.150" endtime="20230414 16:24:48.170"/>
+</kw>
+<kw name="Capture the Screen" library="CommonWrapper">
+<arg>cmcHomescreenBottom</arg>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:48.170" endtime="20230414 16:24:48.170"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:50.176" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:48.170" endtime="20230414 16:24:50.176"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${ScreenName}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230414 16:24:50.385" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="cmcHomescreenBottom.png"&gt;&lt;img src="cmcHomescreenBottom.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230414 16:24:50.178" endtime="20230414 16:24:50.385"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:48.170" endtime="20230414 16:24:50.385"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:45.229" endtime="20230414 16:24:50.385"/>
+</kw>
+<kw name="click on about calix and verify it opens up marketing cloud release notes" library="homeScreenPO">
+<kw name="Log" library="BuiltIn">
+<arg>CCL-40575</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230414 16:24:50.389" level="INFO">CCL-40575</msg>
+<status status="PASS" starttime="20230414 16:24:50.389" endtime="20230414 16:24:50.389"/>
+</kw>
+<kw name="Click Element Until Visible" library="CommonWrapper">
+<arg>${home_aboutBtnFooter}</arg>
+<doc>Wait until element is visible and then click element</doc>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:50.389" endtime="20230414 16:24:50.392"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:50.392" endtime="20230414 16:24:50.408"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${locator}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230414 16:24:50.408" level="INFO">Clicking element 'id=about-calix'.</msg>
+<status status="PASS" starttime="20230414 16:24:50.408" endtime="20230414 16:24:50.482"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:51.482" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230414 16:24:50.482" endtime="20230414 16:24:51.482"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:50.389" endtime="20230414 16:24:51.482"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:56.493" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:51.482" endtime="20230414 16:24:56.493"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>About Calix Marketing Cloud</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20230414 16:24:56.494" endtime="20230414 16:24:56.558"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>About Calix Marketing Cloud</arg>
+<arg>30s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230414 16:24:56.561" endtime="20230414 16:24:56.574"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${currentUrl}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20230414 16:24:56.587" level="INFO">${currentUrl} = https://www.calix.com/content/dam/calix/mycalix-misc/lib/cloud/rn/current/marketing-cloud-rn.htm</msg>
+<status status="PASS" starttime="20230414 16:24:56.582" endtime="20230414 16:24:56.587"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${home_aboutCalix_currentPath}</arg>
+<arg>${currentUrl}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20230414 16:24:56.590" endtime="20230414 16:24:56.591"/>
+</kw>
+<kw name="Capture the Screen" library="CommonWrapper">
+<arg>aboutCalixMarketingCloud</arg>
+<kw name="Set Library Search Order" library="BuiltIn">
+<arg>seleniumlibrary</arg>
+<doc>Sets the resolution order to use when a name matches multiple keywords.</doc>
+<status status="PASS" starttime="20230414 16:24:56.591" endtime="20230414 16:24:56.591"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230414 16:24:58.596" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230414 16:24:56.591" endtime="20230414 16:24:58.596"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>${ScreenName}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20230414 16:24:58.684" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="aboutCalixMarketingCloud.png"&gt;&lt;img src="aboutCalixMarketingCloud.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230414 16:24:58.597" endtime="20230414 16:24:58.684"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:56.591" endtime="20230414 16:24:58.684"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${Home_pagetitle}</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20230414 16:24:58.684" endtime="20230414 16:24:58.715"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:50.387" endtime="20230414 16:24:58.715"/>
+</kw>
+<tag>cmcHomeScreen</tag>
+<tag>cmcHomeScreenNav</tag>
+<tag>e2eUI</tag>
+<tag>testingdb</tag>
+<status status="PASS" starttime="20230414 16:24:45.229" endtime="20230414 16:24:58.715"/>
+</test>
+<kw name="Close the browsers" library="LandingPage" type="TEARDOWN">
+<doc>This keyword is used to close all Open Browser</doc>
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20230414 16:24:58.715" endtime="20230414 16:25:00.868"/>
+</kw>
+<status status="PASS" starttime="20230414 16:24:58.715" endtime="20230414 16:25:00.868"/>
+</kw>
+<status status="PASS" starttime="20230414 16:23:13.193" endtime="20230414 16:25:00.868"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">cmcHomeScreen</stat>
+<stat pass="1" fail="0" skip="0">cmcHomeScreenNav</stat>
+<stat pass="1" fail="0" skip="0">e2eUI</stat>
+<stat pass="1" fail="0" skip="0">testingdb</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="HomeScreen">HomeScreen</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230414 16:23:14.290" level="ERROR">Error in file 'C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\PO\CMCAPI_Integration.robot' on line 7: Processing variable file 'C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\Results\readxml_report_push.py' failed: Importing variable file 'C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\Results\readxml_report_push.py' failed: ParseError: no element found: line 1, column 0
+Traceback (most recent call last):
+  File "C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\Results\readxml_report_push.py", line 188, in &lt;module&gt;
+    readxmlfile.mysql_allFunctions()
+  File "C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\Results\readxml_report_push.py", line 180, in mysql_allFunctions
+    readxmlfile.testcases()
+  File "C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\Results\readxml_report_push.py", line 51, in testcases
+    tree = ET.parse(data_file)
+  File "c:\users\kathir\appdata\local\programs\python\python36\lib\xml\etree\ElementTree.py", line 1196, in parse
+    tree.parse(source, parser)
+  File "c:\users\kathir\appdata\local\programs\python\python36\lib\xml\etree\ElementTree.py", line 597, in parse
+    self._root = parser._parse_whole(source)
+PYTHONPATH:
+  C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\Results
+  C:\Users\Kathir\AppData\Local\Programs\Python\Python36\Scripts\robot.exe
+  c:\users\kathir\appdata\local\programs\python\python36\python36.zip
+  c:\users\kathir\appdata\local\programs\python\python36\DLLs
+  c:\users\kathir\appdata\local\programs\python\python36\lib
+  c:\users\kathir\appdata\local\programs\python\python36
+  c:\users\kathir\appdata\local\programs\python\python36\lib\site-packages
+  c:\users\kathir\appdata\local\programs\python\python36\lib\site-packages\win32
+  c:\users\kathir\appdata\local\programs\python\python36\lib\site-packages\win32\lib
+  c:\users\kathir\appdata\local\programs\python\python36\lib\site-packages\Pythonwin</msg>
+<msg timestamp="20230414 16:23:15.272" level="ERROR">Error in file 'C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\PO\Campigns_po.robot' on line 3758: Creating keyword 'Step 2 select mobile noti, mailchimp and facebook' failed: Keyword with same name defined multiple times.</msg>
+<msg timestamp="20230414 16:23:16.137" level="ERROR">Error in file 'C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\PO\CampaignsCreationKeywords.robot' on line 483: Creating keyword 'New campaign with mobile noti, mailchimp and facebook' failed: Keyword with same name defined multiple times.</msg>
+<msg timestamp="20230414 16:23:16.298" level="ERROR">Error in file 'C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\PO\Thoughtspot.robot' on line 9: Invalid resource file extension '.yml'. Supported extensions are '.resource', '.robot', '.txt', '.tsv', '.rst' and '.rest'.</msg>
+<msg timestamp="20230414 16:23:16.298" level="ERROR">Error in file 'C:\Users\Kathir\Documents\GitHub-23.2\CMC-Robotframework-23.2\Optimized_TestSuites\Base.robot' on line 63: Resource file 'ConfigParserKeywords.robot' does not exist.</msg>
+</errors>
+</robot>

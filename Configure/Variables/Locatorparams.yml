@@ -1,0 +1,231 @@
+Home:
+  Thoughtspot_Insights:
+    Insights:   //*[@class='ng-star-inserted']//*[contains(text(),'Insights')]/parent::div//*[@id='thoughtspot_insight_board']
+    Subscribers_thoughtspot:   //*[@class='bk-title-section']//*[contains(text(),'Subscribers')]
+    Average_fee:   //*[@class='bk-title-section']//*[contains(text(),'Average Attainablefee')]
+    Thoughtspot_logo:   //*[@class='bk-ts-powered-footer-logo']//*[@src='/resources/img/logo/TS-PoweredBy-Black.svg']
+
+Segments:
+  Recommended_th: css=[id*='DataTables_Table']>thead>[role='row']>th
+  Saved_th: css=[id*='sorting']>thead>[role='row']>th
+  Saved_search: css=[class='tabs-wrapper']>div>div>[type=text]
+  Recommended_search: css=[class='d-block']>div>div>[type=text]
+  Type_dropdown: xpath=(//*[@id='typeId'])[1]
+  Saved_delete_btn: css=[title='Delete']
+  Saved_delete_check: xpath=(//*[@id='sorting']//*[@class='table-row-group']/tr/td[3])/span[contains(text(),'-')]
+  Saved_pagination: xpath=//*[@id='sorting_wrapper']//*[@class='dataTables_paginate paging_full_numbers']
+  Saved_last_page_no: xpath=//*[@id='sorting_wrapper']//*[@class='dataTables_paginate paging_full_numbers']/span/a[last()]
+  Saved_next_btn: xpath=//*[@class='paginate_button next']
+  Saved_type: xpath=//*[@id='sorting']//tbody//tr//td[2]
+  Recommended_type: xpath=//*[contains(@id,'DataTables')]//tbody//tr//td[2]
+  Saved_1st_name: xpath=//*[contains(@id,'sorting')]/tbody/tr[1]/td[1]/span
+  Recommended_1st_name: xpath=//*[contains(@id,'DataTables')]/tbody/tr[1]/td[1]/span
+  Dropdown_select: xpath=//*[contains(@class,'scroll')]//*[text()='{Value}']
+
+Explore_data:
+  Region_drop:  id=regionSelect
+  Location_drop:  id=locationSelect
+  Region_diff:  xpath=(//*[contains(@class,'scroll-host')]/div/div[contains(@class,'ng-option')])[4]
+  Region_all:  xpath=(//*[contains(@class,'scroll-host')]/div/div[contains(@class,'ng-option')])[1]
+  Timeframe_drop:  id=timeFrameSelect
+  Timeframe_select:  xpath=//*[contains(@class,'scroll')]//*[contains(text(),'{Time}')]
+  Apply_btn:  id=applyFilter
+  Apply_dis_btn:  xpath=//*[@id='applyFilter']/button[@disabled]
+  Clear_btn:  id=clearFilter
+  Exploredata_tabs:  css=[class='tabs-wrapper']>div>a
+  ExploreData_basic_tab:  id=basicData-list-tab
+  ExploreData_advanced_tab:  id=advance-qlik-list-tab
+  ExploreData_pro_tab:  id=prospect-qlik-list-tab
+  ExploreData_custom_sub_tab:  id=custom-qlik-list-tab
+  ExploreData_custom_pro_tab:  id=custom-qlik-list-prospect
+
+Campaigns:
+  Campaigns_tab:    id=campaignMarketingSection
+  new_campaign_btn:    id=newCampaignAdd
+  Campaign_sub_tabs:  css=[class='tabs flex sub-tab']>[id$='list-tab']
+  Campaign_sub_th:  css=tr>th
+  Campaigns_types:  css=[class='dropdown-menu show']>li
+  Scheduled_campaign:
+    Select_campaign:   css=[class*='dropdown-menu']>li:nth-child(1)
+    Scheduled_active:   css=[id='basicData-list-tab'][class='active']
+    Direct_mail_txt:   css=[class*='chk-group']>[for='Mailchimp']
+    Direct_mail_checkbox:   css=[class*='chk-group']>[id='Mailchimp']
+    Direct_hub_txt:   css=[class*='chk-group']>[for='HubSpot']
+    Direct_hub_checkbox:   css=[class*='chk-group']>[id='HubSpot']
+    Mailchimp_select_txt:   xpath=//*[@id='Mailchimp']/parent::div/parent::div/div[3]
+    Hubspot_select_txt:   xpath=//*[@id='HubSpot']/parent::div/parent::div/div[3]
+    Camp_status:   xpath=//tbody/tr/td[2]
+    Camp_type:   xpath=//tbody/tr/td[3]
+    Camp_table_header:   xpath=//*[@id='campaigns-table']/thead/tr/th
+
+  Triggered_campaign:
+    Tab:  id=triggered-list-tab
+    Select_campaign:  css=[class*='dropdown-menu']>li:nth-child(2)
+    Triggered_active:  css=[id='triggered-list-tab'][class='active']
+    Trigger_drop:  css=[class='ng-select-container']
+    Trigger_names:  css=[class$='scroll-host']>div>[class*='ng-option']
+    Competitor_type:  css=[class$='scroll-host']>div>[class*='ng-option']:nth-child(1)
+    Service_type:  css=[class$='scroll-host']>div>[class*='ng-option']:nth-child(2)
+    Speed_type:  css=[class$='scroll-host']>div>[class*='ng-option']:nth-child(3)
+    Competitor_type_name:  css=[class*='ng-value']>div>span:nth-child(1)
+    Service_type_name:  css=[class*='ng-value']>div>span:nth-child(2)
+    Speed_type_name:  css=[class*='ng-value']>div>span:nth-child(3)
+    Campaign_name_input:  id=campaign-name
+    Campaign_name_define:  css=[title*='Service']
+    Campaign_comp_define:  css=[title*='Competitor']
+    Campaign_speed_define:  css=[title*='Speed']
+    Inst_Do_not_path:  css=[class^='ccl-form-label']
+    Help_txt:  css=[class='ccl-mktg-Small-title gray']
+    Segment_drop:  id=segmentDropdown
+    Campaign_search:  css=[placeholder='Search']
+    Pause_btn_show:  css=[class='d-inline-flex show']>a>[src='../../../../assets/img/ic_controls_pause.svg']
+    Pause_btn_hide:  css=[class='d-inline-flex hide']>a>[src='../../../../assets/img/ic_controls_pause.svg']
+    Edit_btn:  css=[class='d-inline-flex']>span>[class='fas fa-pencil-alt']
+    Play_btn_show:  css=[class='d-inline-flex show']>a>[src='../../../../assets/img/ic_controls_play.svg']
+    Play_btn_hide:  css=[class='d-inline-flex hide']>a>[src='../../../../assets/img/ic_controls_play.svg']
+    Delete_btn:  css=[title='Delete']>[class='mr-0 primary fas fa-trash-alt']
+    Popup_pause_txt:  id=title-pause-campaign
+    Popup_pausehelp_txt:  css=[class='ccl-form-labe']
+    Popup_pause_btn:  id=BtnPauseCampaign
+    Popup_cancel_btn:  id=BtnCancelPauseCampaign
+    Result_pause_txt: id=campaign-pause-title
+    Result_pause_btn: id=campaign-pause-btn
+    Result_cancel_btn: id=campaign-cancel-btn
+    Popup_close_btn:  css=[class='close']>span
+    Table_campaign_name:  xpath=(//table/tbody/tr)[1]
+    Delete_header:  id=title-delete-campaign
+    Delete_help_txt:  css=[class='ccl-form-label pr-2']
+    Delete_cnfrm_btn:  id=btnDeleteCampaign
+    Delete_cancel_btn:  id=btnCancelDeleteCampaign
+    Draft_status_txt:  css=tr[class='odd']>:nth-child(2)>div
+    Define_Header_path:  css=[class^='col-sm-12 col-form-label']
+    Instance_Input_field:  id=campaign-event
+    Resend_Input_field:  id=campaign-trigger
+    Budget_Input_field:  id=campaign-budget
+    Target_Input_field:  id=campaign-target
+    Start_Input_field:  css=[placeholder='Select Start Date']
+    testData_highLightedDate:  //span[contains(@class,'highlight')]
+    End_Input_field:  css=[id='campaign-date'][placeholder='Indefinite (May Be Paused)']
+    Draft_Status:  css=[title='Draft']
+    Active_Status:  css=[title='Active']
+    Close_btn:  css=[src='assets/img/ic_removeall.svg']
+    Next_btn:  css=[class='btn-arrow btn-arr-nxt primary ng-star-inserted']
+    Previous_btn:  css=[class='btn-arrow btn-arr-prev btn-grey ng-star-inserted']
+    Save_cmp_btn:  css=[class='btn-default btn-dft m-w100p ng-star-inserted']
+    All_checkbox:  id=headerCheckBox
+    Mobile_checkbox:  css=[value='Mobile Notification']
+    Mailchimp_checkbox:  css=[value='Mailchimp']
+    Channel_header:  css=[class*='table-responsive']>table>thead>tr>th
+    Description_exp:  css=[class='ng-star-inserted']>:nth-child(5)
+    Mailchimp_header:  id=deploy-mailchimp
+    Service_seg_path:  css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']>:nth-child(3)
+    Note_path:  css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']>:nth-child(4)
+    ECB_path:  css=[class='col-lg-12 col-md-12 col-sm-12 ng-star-inserted']>:nth-child(5)
+    Deploy_btn:  css=[class='deploy-btn ng-star-inserted']
+    Popup_deploy_header:  id=addModal
+    Popup_action:  css=[class='text-left']
+    Popup_audience:  css=[class='popup_list']>li
+    Popup_cnfrm_btn:  xpath=(//*[@id='deployCampaign'])[1]
+    Popup_cncl_btn:  xpath=(//*[text()='Cancel'])[1]
+    Popup_mob_cnfrm_btn: xpath=(//*[@id='deployCampaign'])[2]
+    Popup_mob_cncl_btn: xpath=(//*[text()='Cancel'])[2]
+    Result_page_header:  css=[class='flex-container']>div>div>span
+    Result_page_mail_header:  css=[class='flex-container flex-nowrap']>div>div>label
+    Result_page_mailchimp:  css=[class='title_bar']
+    Result_page_audience:  id=segmentchannelDownload
+    Result_page_Deploy:  css=[class='title_with_bar']>div>span
+    Result_page_Status:  css=[class='title_with_bar']>div>h5
+    Result_audience_help:  css=[class='p-small ng-star-inserted']
+    Result_XYaxis_txt:  css=[class='highcharts-axis-title']
+    Result_performance:  id=campaign-performance
+    Result_segment:  (//*[@id='segment-revenue'])[1]
+    Result_after_segment:  (//*[@id='segment-revenue'])[2]
+    Result_total:  id=total-revenue
+    Result_after_total:  (//*[@class='title-second greyaa'])[4]
+    Result_subtitle:  css=[class='rev_box ng-star-inserted']>div>span
+    Result_Date:  css=[id='result-start-date']>div>h5
+    Result_Rate:  css=[id='result-conversion-rate']>div>h5
+    Result_budget:  css=[id='result-budget']>div>h5
+    refresh_icon:  id=serviceDataRefresh
+    Total_sub_pendo:  id=pendo-image-badge-4696c530
+    Audience_exp_btn:  id=CMCsegmentchannelExpandSection
+    Audience_After_exp_btn:  (//*[@id='Campaign-Segmentchannel-ExpandSection'])[2]
+    Audience_dwnld_btn:  id=CMCsegmentchannelDownload
+    Audience_After_dwnld_btn:  id=Campaign-Segmentchannel-Download
+    Subscriber_exp_btn: (//*[@id='CMCsegmentchannelExpandSection'])[2]
+    Subscriber_After_exp_btn: id=segmentchannelExpandSectionrev
+    Subscriber_dwnld_btn: (//*[@id='CMCsegmentchannelDownload'])[2]
+    Subscriber_After_dwnld_btn: id=segmentchannelDownloadrev
+    SLH_Active_name_budget: css=tr>td>div>span
+    SLH_triggered: css=[title='Service Limit Hit']
+    CSM_triggered: css=[title='Competitor Visit Minutes']
+    STM_triggered: css=[title='Speed Test Minutes']
+    SLH_Channel_disabled: css=[title='Channel'][disabled='true']
+    SLH_Deploy_disabled: css=[title='Deploy'][disabled='true']
+    SLH_Paused: css=[title='Paused']
+    SLH_UnPause_header: id=title-unpause-campaign
+    Unpause_help_txt: css=[class='ccl-form-labe']
+    Unpause_cnfrm_btn: id=BtnUnpauseCampaign
+    Unpause_cancel_btn: id=BtnCancelUnpauseCampaign
+    Result_Unpause_header: id=campaign-unpause-title
+    Result_Unpause_cnfrm_btn: id=campaign-unpause-btn
+    Result_Unpause_cancel_btn: id=campaign-unpause-cancel-btn
+    Status_dorpdown: id=statusId
+    Select_Status: xpath=//*[contains(@class,'ng-option')][contains(text(),'{Status}')]
+    List_Status: xpath=//tbody/tr/td[2]
+    Campaign_first: xpath=//tbody[@class='table-row-group']/tr/td[1]
+    Status_names: xpath=//*[contains(@class,'ng-option')]/span
+    First_pagination_btn:  xpath=//*[contains(text(),'First')]
+    Previous_pagination_btn:  xpath=//*[contains(text(),'Previous')]
+    Next_pagination_btn:  xpath=//*[contains(text(),'Next')]
+    Last_pagination_btn:  xpath=//*[contains(text(),'Last')]
+    Showing_pagination_btn:  xpath=//*[contains(text(),'Showing')]
+    Entries_pagination_btn:  xpath=//*[contains(text(),'entries')]
+    Impact_camp_btn:  css=[class='text-decoration-none']
+    Event_name:  css=[placeholder='Gamers_Upgrade']
+    Pause_btn:  xpath=//*[contains(text(),'Pause Campaign')]
+    Unpause_btn:  xpath=//*[contains(text(),'Unpause Campaign')]
+    Audience_count:  xpath=(//*[contains(text(),'Daily Campaign Audience')])[1]/following-sibling::*
+    Audience_exp_count:  xpath=(//*[contains(text(),'Daily Campaign Audience')])[2]/following-sibling::h3
+    Subscriber_count:  css=[class='total_revenue']>div>div>h3
+    Subscriber_exp_count:  xpath=(//*[contains(text(),'Total Subscribers')])[4]/following-sibling::h3
+    Audience_tab:  id=Audience-Sync-Details
+    Audience_th:  css=[id*='DataTables_Table']>table>thead>tr>th
+    Audience_1st_name:  css=[id*='DataTables_Table']>table>tbody>tr:nth-child(1)>td:nth-child(2)
+    Audience_search:  css=[placeholder='Search']
+    Audience_type:  id=typeId
+    Audience_options_btn:  id=dropdownMenuButton
+    Audience_CSV_btn:  css=[class='dropdown-menu show']
+    Audience_page_first:  xpath=//*[text()='First']
+    Audience_page_previous:  xpath=//*[text()='Previous']
+    Audience_page_next:  xpath=//*[text()='Next']
+    Audience_page_last:  xpath=//*[text()='Last']
+    Audience_page_info:  xpath=//*[contains(text(),'Showing')]
+    Audience_data:  css=[id*='DataTables_Table']>table>[class='table-row-group']>tr
+
+  Engagement_channels:
+    Mail_Instruct_1:  css=[class='row']>div>p
+    Mail_Instruct_2:  css=[class='row']>div>ol>li
+    Mail_Instruct_3:  css=[class='row']>div>ol>p
+    Facebook_Instruct_1:  css=[class='row']>div>div>ul>li
+    Facebook_Instruct_2:  css=[class='row']>div>div>ol>li
+    Facebook_Instruct_3:  css=[class='row']>div>div>ol>p
+
+  All_campaign:
+    Average_Revenue_dwnld_btn:  (//*[@id='CMCsegmentchannelDownload'])[1]
+    Total_Revenue_dwnld_btn:  (//*[@id='CMCsegmentchannelDownload'])[2]
+    Average_Revenue_expn_btn:  (//*[@id='CMCsegmentchannelExpandSection'])[1]
+    Total_Revenue_expn_btn:  (//*[@id='CMCsegmentchannelExpandSection'])[2]
+    Results_SubscribersTab:  id=serviceData-list-menu
+    Average_Revenue_period:  (//*[text()='Campaign Period'])[1]
+    Total_Revenue_period:  (//*[text()='Campaign Period'])[2]
+    Average_Revenue_post: (//*[text()='Post Campaign Period'])[1]
+    Total_Revenue_post: (//*[text()='Post Campaign Period'])[2]
+    AverageRev_expanded_dLoadBtn:  id=Campaign-Segmentchannel-Download
+    AverageRev_SegRev_expanded_closeBtn:  xpath=(//*[@id='Campaign-Segmentchannel-ExpandSection'])[2]
+    Results_RevTab_TotlRev_expanded_dLoadBtn:  id=segmentchannelDownloadrev
+    Results_RevTab_TotlRev_expanded_closeBtn:  id=segmentchannelExpandSectionrev
+
+
+
+

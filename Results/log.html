@@ -1,0 +1,1913 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RF Metrics</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <style>
+      body {
+        padding-top: 70px;
+        font-family: -apple-system, sans-serif;
+        background-color: #eeeeee;
+      }
+      
+      .tablecard {
+        background-color: white;
+        font-size: 14px;
+      }
+      
+      th, td {
+        text-align: center;
+      }
+      
+      .dt-buttons {
+        margin-left: 5px;
+      }
+
+      .row {
+        padding: 5px;
+      }
+
+      .rowcard {
+        padding: 10px;
+        border-radius: 15px;
+        background-color: white;
+      }
+      
+      .card-header {
+        font-weight:bold;
+        color:gray;
+        padding-left: 5px;
+      }
+
+      .card-table{
+        width: 100%;
+      }
+
+      .ecard-table {
+        width: 100%;
+      }
+
+      .ecard-table tr{
+        height: 35px;
+        padding-left: 5px;
+      }
+
+      .ecard-table tr:nth-child(even){
+        background-color: #f2f2f2;
+      }
+
+      .card-table tr{
+        height: 25px;
+      }
+
+      .card-table td{
+        width: 50%;
+      }
+
+      .card-table tr:first-child{
+        font-size: 30px;
+      }
+
+      .card-table tr:last-child{
+        font-size: 10px;
+        color: gray;
+      }
+
+      .total {
+        color: brown;
+      }
+
+      .pass {
+        color: green;
+      }
+
+      .fail {
+        color: red;
+      }
+
+      .skip {
+        color: orange;
+      }
+      
+      .loader {
+          position: fixed;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+          /* background: url('https://i.ibb.co/cXnKsNR/Cube-1s-200px.gif') 50% 50% no-repeat rgb(249, 249, 249); */
+          background: url('https://i.ibb.co/wR1s7Wq/giphy-1.gif') 50% 50% no-repeat rgb(249, 249, 249);
+          
+      }
+
+      .hide{
+          display:none;  
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="loader"></div>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">Metrics</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" class="tablink" id="defaultOpen" onclick="openPage('dashboard', this, '#fc6666')">Dashboard</a></li>
+            <li><a href="#" class="tablink" onclick="openPage('suiteMetrics', this, '#fc6666'); executeDataTable('#sm',6)">Suite</a></li>
+            <li><a href="#" class="tablink" onclick="openPage('testMetrics', this, '#fc6666'); executeDataTable('#tm',3)">Test</a></li>
+            <!-- <li class=""><a href="#" class="tablink" onclick="openPage('keywordMetrics', this, '#fc6666'); executeDataTable('#km',3)">Keyword</a></li> -->
+            <li class=""><a href="#" class="tablink" onclick="openPage('keywordMetricsTime', this, '#fc6666'); executeDataTable('#kmt',1)">KW Times</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a>Execution Time(m): 97.85</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Dashboard Data -->
+      <div class="tabcontent" id="dashboard">
+        
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="col-md-12 rowcard">
+              <span class="card-header">Suite Statistics:</span>
+              <div class="col-md-12">
+                  <div id="suitePie"></div>
+              </div>
+              <div class="col-md-12">
+                  <table class="card-table">
+                    <tr>
+                      <td class="total">10</td>
+                      <td class="pass">9</td>
+                    </tr>
+                    <tr>
+                      <td>Total</td>
+                      <td>Pass</td>
+                    </tr>
+                  </table>
+                  <table class="card-table">
+                    <tr>
+                      <td class="fail">1</td>
+                      <td class="skip">0</td>
+                    </tr>
+                    <tr>
+                      <td>Fail</td>
+                      <td>Skip</td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="col-md-12 rowcard">
+              <span class="card-header">Test Statistics:</span>
+              <div class="col-md-12">
+                  <div id="testPie"></div>
+              </div>
+              <div class="col-md-12">
+                  <table class="card-table">
+                    <tr>
+                      <td class="total">12</td>
+                      <td class="pass">11</td>
+                    </tr>
+                    <tr>
+                      <td>Total</td>
+                      <td>Pass</td>
+                    </tr>
+                  </table>
+                  <table class="card-table">
+                    <tr>
+                      <td class="fail">1</td>
+                      <td class="skip">0</td>
+                    </tr>
+                    <tr>
+                      <td>Fail</td>
+                      <td>Skip</td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="col-md-12 rowcard">
+              <span class="card-header">Keyword Statistics:</span>
+              <div class="col-md-12">
+                  <div id="keywordPie"></div>
+              </div>
+              <div class="col-md-12">
+                  <table class="card-table">
+                    <tr>
+                      <td class="total">3445</td>
+                      <td class="pass">3408</td>
+                    </tr>
+                    <tr>
+                      <td>Total</td>
+                      <td>Pass</td>
+                    </tr>
+                  </table>
+                  <table class="card-table">
+                    <tr>
+                      <td class="fail">15</td>
+                      <td class="skip">0</td>
+                    </tr>
+                    <tr>
+                      <td>Fail</td>
+                      <td>Skip</td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row"></div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="col-md-12 rowcard">
+              <span class="card-header">Top 5 Common Failures:</span>
+              <table class="ecard-table">
+                <tr>
+                  <th>Error Message</th>
+                  <th>Occurence</th>
+                </tr>
+                
+                  
+                
+                  
+                    <tr>
+                      <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Several failures occurred:
+
+1) Element '//*[contains(text(),'The IP addresses below are the VoIP switches allowed to connect to the GigaSpire VoIP gateway')]' not visible after 1 minute.
+
+Also keyword teardown failed:
+Variable '${add_result}' not found.
+
+2) Element '//*[contains(text(),'The Access Control List below defines the list of IP addresses that may access the EWI remotely')]' not visible after 1 minute.
+
+Also keyword teardown failed:
+Variable '${add_result}' not found.</td>
+                      <td>1</td>
+                    </tr>
+                  
+                
+              </table>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-12 rowcard">
+              <span class="card-header">Execution Duration(m):</span>
+              <table class="ecard-table">
+                <tr>
+                  <th>Type</th>
+                  <th>Min</th>
+                  <th>Max</th>
+                  <th>Avg</th>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">Suite</td>
+                  <td>6.97</td>
+                  <td>16.47</td>
+                  <td>9.79</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">Test</td>
+                  <td>1.3</td>
+                  <td>15.55</td>
+                  <td>7.37</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-12 rowcard">
+              <span class="card-header">Top 10 Suite Failures:</span>
+              <div class="col-md-12">
+                <div id="suiteFailureLineID"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row"></div>
+        </div>
+      </div>
+
+      <!-- Suite Data -->
+      <div class="tabcontent" id="suiteMetrics">
+        <table id="sm" class="display tablecard" style="width:100%">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Total</th>
+                  <th>Pass</th>
+                  <th>Fail</th>
+                  <th>Skip</th>
+                  <th>Time (s)</th>
+              </tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.RGProfiles" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s1','#s1-s1-s1-s1-s1-s1-s1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.RGProfiles</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>3</td>
+                <td style="color: green">3</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>559.9</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile6" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s2','#s1-s1-s1-s1-s1-s1-s2')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile6</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>1</td>
+                <td style="color: green">1</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>630.01</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile7" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s3','#s1-s1-s1-s1-s1-s1-s3')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile7</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>1</td>
+                <td style="color: green">1</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>533.53</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile8" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s4','#s1-s1-s1-s1-s1-s1-s4')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile8</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>1</td>
+                <td style="color: green">1</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>785.51</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split Profile9" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s5','#s1-s1-s1-s1-s1-s1-s5')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split Profile9</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>1</td>
+                <td style="color: green">1</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>987.98</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile1" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s6','#s1-s1-s1-s1-s1-s1-s6')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile1</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>1</td>
+                <td style="color: green">1</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>418.05</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile2" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s7','#s1-s1-s1-s1-s1-s1-s7')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile2</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>1</td>
+                <td style="color: green">1</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>431.25</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile3" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s8','#s1-s1-s1-s1-s1-s1-s8')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile3</td>
+                
+                  <td style="color: red"> FAIL</td>
+                
+                <td>1</td>
+                <td style="color: green">0</td>
+                <td style="color: red">1</td>
+                <td style="color: orange">0</td>
+                <td>677.32</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile4" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s9','#s1-s1-s1-s1-s1-s1-s9')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile4</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>1</td>
+                <td style="color: green">1</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>418.27</td>
+              </tr>
+            
+              <tr>
+                <td data-toggle="tooltip" title="CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile5" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s10','#s1-s1-s1-s1-s1-s1-s10')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile5</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>1</td>
+                <td style="color: green">1</td>
+                <td style="color: red">0</td>
+                <td style="color: orange">0</td>
+                <td>429.28</td>
+              </tr>
+            
+          </tbody>
+        </table> 
+      </div>
+
+      <!-- Test Case Data -->
+      <div class="tabcontent" id="testMetrics">
+        <table id="tm" class="display tablecard" style="width:100%">
+          <thead>
+              <tr>
+                <th>Suite Name</th>
+                <th>Test Name</th>
+                <th>Status</th>
+                <th>Time (s)</th>
+                <th>Message</th>
+                <th class="hide">Tags</th>
+              </tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">RGProfiles</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s1-t1','#s1-s1-s1-s1-s1-s1-s1-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>317.69</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">RGProfiles</td>
+                <td data-toggle="tooltip" title="Edit profile info" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s1-t2','#s1-s1-s1-s1-s1-s1-s1-t2')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Edit profile info</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>77.85</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[Editprofile, Profile, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">RGProfiles</td>
+                <td data-toggle="tooltip" title="Validate the Previous and Next Button in profile" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s1-t3','#s1-s1-s1-s1-s1-s1-s1-t3')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate the Previous and Next Button in profile</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>105.81</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[Profile, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split profile6</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s2-t1','#s1-s1-s1-s1-s1-s1-s2-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>571.07</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split profile7</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s3-t1','#s1-s1-s1-s1-s1-s1-s3-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>475.01</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split profile8</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s4-t1','#s1-s1-s1-s1-s1-s1-s4-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>726.59</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split Profile9</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s5-t1','#s1-s1-s1-s1-s1-s1-s5-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>933.15</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[COC, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split RGProfile1</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s6-t1','#s1-s1-s1-s1-s1-s1-s6-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>365.01</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split RGProfile2</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s7-t1','#s1-s1-s1-s1-s1-s1-s7-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>376.68</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split RGProfile3</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s8-t1','#s1-s1-s1-s1-s1-s1-s8-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: red"> FAIL</td>
+                
+                <td>616.37</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Several failures occurred:
+
+1) Element '//*[contains(text(),'The IP addresses below are the VoIP switches allowed to connect to the GigaSpire VoIP gateway')]' not visible after 1 minute.
+
+Also keyword teardown failed:
+Variable '${add_result}' not found.
+
+2) Element '//*[contains(text(),'The Access Control List below defines the list of IP addresses that may access the EWI remotely')]' not visible after 1 minute.
+
+Also keyword teardown failed:
+Variable '${add_result}' not found.</td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split RGProfile4</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s9-t1','#s1-s1-s1-s1-s1-s1-s9-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>364.52</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+              <tr>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">Split RGProfile5</td>
+                <td data-toggle="tooltip" title="Validate profiles Scenario" onclick="openInNewTab('log.html#s1-s1-s1-s1-s1-s1-s10-t1','#s1-s1-s1-s1-s1-s1-s10-t1')" style="word-wrap: break-word;max-width: 250px; white-space: normal; cursor: pointer; color:blue; text-align: left;">Validate profiles Scenario</td>
+                
+                  <td style="color: green"> PASS</td>
+                
+                <td>376.16</td>
+                <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;"></td>
+                <td class="hide" style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">[NetOps, Profiles, Regression]</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Keyword Data -->
+      <!-- <div class="tabcontent" id="keywordMetrics">
+        <table id="km" class="display tablecard" style="width:100%">
+          <thead>
+              <tr>
+                  <th>Test Name</th>
+                  <th>Keyword Name</th>
+                  <th>Status</th>
+                  <th>Time (s)</th>
+              </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div> -->
+
+      <!-- Keyword Average -->
+      <div class="tabcontent" id="keywordMetricsTime">
+        <table id="kmt" class="display tablecard" style="width:100%">
+          <thead>
+              <tr>
+                  <th>Keyword Name</th>
+                  <th>Times</th>
+                  <th>Min Duration(s)</th>
+                  <th>Max Duration(s)</th>
+                  <th>Average Duration(s)</th>
+              </tr>
+          </thead>
+          <tbody>
+            
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Capture the Screen</td>
+                  <td>196</td>
+                  <td>0.0</td>
+                  <td>2.75</td>
+                  <td>1.38</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Click Element Until Enabled</td>
+                  <td>524</td>
+                  <td>0.05</td>
+                  <td>1.33</td>
+                  <td>0.15</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Click Element Until Visible</td>
+                  <td>722</td>
+                  <td>2.03</td>
+                  <td>60.66</td>
+                  <td>2.62</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Close the browsers</td>
+                  <td>10</td>
+                  <td>0.16</td>
+                  <td>0.35</td>
+                  <td>0.22</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Enter the Value Untill Visible</td>
+                  <td>284</td>
+                  <td>0.06</td>
+                  <td>0.9</td>
+                  <td>0.16</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Initialize configuration parameters</td>
+                  <td>10</td>
+                  <td>0.99</td>
+                  <td>2.69</td>
+                  <td>1.31</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Navigate to CCO Page</td>
+                  <td>10</td>
+                  <td>18.39</td>
+                  <td>22.45</td>
+                  <td>19.5</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Page Should Contain Multiple Text</td>
+                  <td>5</td>
+                  <td>0.03</td>
+                  <td>0.38</td>
+                  <td>0.22</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Page Should not Contain Multiple Element</td>
+                  <td>7</td>
+                  <td>0.03</td>
+                  <td>0.05</td>
+                  <td>0.04</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Scroll To Element</td>
+                  <td>10</td>
+                  <td>0.03</td>
+                  <td>0.05</td>
+                  <td>0.03</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Wait Until Element Visible</td>
+                  <td>62</td>
+                  <td>0.0</td>
+                  <td>0.28</td>
+                  <td>0.03</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Wait Until Elements Are Visible</td>
+                  <td>419</td>
+                  <td>0.02</td>
+                  <td>60.57</td>
+                  <td>0.58</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Wait Until Page Does Not Contain Elements</td>
+                  <td>1</td>
+                  <td>0.02</td>
+                  <td>0.02</td>
+                  <td>0.02</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.Wait until loader spinner disappears</td>
+                  <td>396</td>
+                  <td>0.0</td>
+                  <td>5.36</td>
+                  <td>1.02</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">CommonWrapper.wait until page does not contain the element</td>
+                  <td>53</td>
+                  <td>0.04</td>
+                  <td>0.46</td>
+                  <td>0.07</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">ConfigParserKeywords.Parsing Dev test data config</td>
+                  <td>10</td>
+                  <td>0.01</td>
+                  <td>0.03</td>
+                  <td>0.01</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">ConfigParserKeywords.Parsing locators information</td>
+                  <td>10</td>
+                  <td>0.82</td>
+                  <td>2.25</td>
+                  <td>1.1</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">ConfigParserKeywords.Parsing test data config</td>
+                  <td>20</td>
+                  <td>0.08</td>
+                  <td>0.27</td>
+                  <td>0.1</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">LandingPageNew.Login to site and navigate to cco page</td>
+                  <td>10</td>
+                  <td>48.98</td>
+                  <td>56.74</td>
+                  <td>51.79</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">LandingPageNew.login to calix application</td>
+                  <td>10</td>
+                  <td>28.7</td>
+                  <td>32.4</td>
+                  <td>30.35</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">NetworkOperationsKeywords.Navigate to Operations</td>
+                  <td>10</td>
+                  <td>2.09</td>
+                  <td>2.13</td>
+                  <td>2.11</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Add Profile Of Different Type</td>
+                  <td>55</td>
+                  <td>69.56</td>
+                  <td>587.92</td>
+                  <td>93.13</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Add a website and verify its elements</td>
+                  <td>3</td>
+                  <td>26.64</td>
+                  <td>26.86</td>
+                  <td>26.76</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Adding and deleting multiple categories for remote access with already created category</td>
+                  <td>2</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Click Profiles Tab</td>
+                  <td>111</td>
+                  <td>2.53</td>
+                  <td>7.49</td>
+                  <td>3.5</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Creating new rules in acl entry for remote access</td>
+                  <td>1</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Creating new rules in acl entry for voip</td>
+                  <td>1</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Delete Profile</td>
+                  <td>55</td>
+                  <td>13.71</td>
+                  <td>15.38</td>
+                  <td>14.03</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Delete the created category and select again</td>
+                  <td>1</td>
+                  <td>5.31</td>
+                  <td>5.31</td>
+                  <td>5.31</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Disable The Service Btn And Element Should Not Visible in Ui</td>
+                  <td>2</td>
+                  <td>3.46</td>
+                  <td>3.48</td>
+                  <td>3.47</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Edit Profile</td>
+                  <td>56</td>
+                  <td>0.0</td>
+                  <td>170.78</td>
+                  <td>22.53</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Edit the category of experienceiq restrictions</td>
+                  <td>1</td>
+                  <td>138.57</td>
+                  <td>138.57</td>
+                  <td>138.57</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of 2.4GHz Wi-Fi Radio</td>
+                  <td>1</td>
+                  <td>17.27</td>
+                  <td>17.27</td>
+                  <td>17.27</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of 5GHz Wi-Fi Radio</td>
+                  <td>1</td>
+                  <td>18.24</td>
+                  <td>18.24</td>
+                  <td>18.24</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of 6GHz Wi-Fi Radio</td>
+                  <td>1</td>
+                  <td>17.13</td>
+                  <td>17.13</td>
+                  <td>17.13</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Add Object</td>
+                  <td>1</td>
+                  <td>6.28</td>
+                  <td>6.28</td>
+                  <td>6.28</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Bandwidth</td>
+                  <td>1</td>
+                  <td>6.05</td>
+                  <td>6.05</td>
+                  <td>6.05</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of DHCP Option82</td>
+                  <td>1</td>
+                  <td>4.51</td>
+                  <td>4.51</td>
+                  <td>4.51</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of DHCP Server</td>
+                  <td>3</td>
+                  <td>7.29</td>
+                  <td>9.16</td>
+                  <td>8.44</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of DHCPv6 Server Disabled</td>
+                  <td>1</td>
+                  <td>6.53</td>
+                  <td>6.53</td>
+                  <td>6.53</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of DHCPv6 Server EXOS-Powered</td>
+                  <td>1</td>
+                  <td>20.99</td>
+                  <td>20.99</td>
+                  <td>20.99</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of DHCPv6 Server Stateless</td>
+                  <td>1</td>
+                  <td>8.73</td>
+                  <td>8.73</td>
+                  <td>8.73</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of DNS Host Mapping</td>
+                  <td>1</td>
+                  <td>4.68</td>
+                  <td>4.68</td>
+                  <td>4.68</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of DSCP</td>
+                  <td>1</td>
+                  <td>9.06</td>
+                  <td>9.06</td>
+                  <td>9.06</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Data Service</td>
+                  <td>1</td>
+                  <td>8.58</td>
+                  <td>8.58</td>
+                  <td>8.58</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Data Service EXOS-Powered_ONT_Half_Bridge_Mode</td>
+                  <td>1</td>
+                  <td>40.09</td>
+                  <td>40.09</td>
+                  <td>40.09</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Data Service EXOS-Powered_RG_L2_Bridged_Mode</td>
+                  <td>1</td>
+                  <td>29.31</td>
+                  <td>29.31</td>
+                  <td>29.31</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Data Service GigaCenter_ONT_Half_Bridge_Mode</td>
+                  <td>1</td>
+                  <td>41.52</td>
+                  <td>41.52</td>
+                  <td>41.52</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Data Service PPPoE Type</td>
+                  <td>1</td>
+                  <td>11.45</td>
+                  <td>11.45</td>
+                  <td>11.45</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Delete Object</td>
+                  <td>1</td>
+                  <td>4.82</td>
+                  <td>4.82</td>
+                  <td>4.82</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Firewall</td>
+                  <td>1</td>
+                  <td>8.61</td>
+                  <td>8.61</td>
+                  <td>8.61</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of LED Management</td>
+                  <td>1</td>
+                  <td>8.94</td>
+                  <td>8.94</td>
+                  <td>8.94</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of LED Management Custom Suppression</td>
+                  <td>1</td>
+                  <td>9.56</td>
+                  <td>9.56</td>
+                  <td>9.56</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Management Server</td>
+                  <td>1</td>
+                  <td>4.54</td>
+                  <td>4.54</td>
+                  <td>4.54</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Management Server ACS Enabled</td>
+                  <td>1</td>
+                  <td>9.21</td>
+                  <td>9.21</td>
+                  <td>9.21</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of PIQ security settings anamoly and defence disabled</td>
+                  <td>1</td>
+                  <td>19.94</td>
+                  <td>19.94</td>
+                  <td>19.94</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of PIQ security settings anamoly and defence enabled</td>
+                  <td>1</td>
+                  <td>19.82</td>
+                  <td>19.82</td>
+                  <td>19.82</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of PPPoE</td>
+                  <td>1</td>
+                  <td>4.4</td>
+                  <td>4.4</td>
+                  <td>4.4</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of QOS Rule</td>
+                  <td>1</td>
+                  <td>4.3</td>
+                  <td>4.3</td>
+                  <td>4.3</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of QOS State</td>
+                  <td>1</td>
+                  <td>4.61</td>
+                  <td>4.61</td>
+                  <td>4.61</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of QoS Rule Define IP Addresses</td>
+                  <td>1</td>
+                  <td>6.72</td>
+                  <td>6.72</td>
+                  <td>6.72</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of QoS Rule Video Upstream</td>
+                  <td>1</td>
+                  <td>9.07</td>
+                  <td>9.07</td>
+                  <td>9.07</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of SNMP</td>
+                  <td>1</td>
+                  <td>5.56</td>
+                  <td>5.56</td>
+                  <td>5.56</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of SNMP_Enable</td>
+                  <td>1</td>
+                  <td>10.66</td>
+                  <td>10.66</td>
+                  <td>10.66</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of SPID</td>
+                  <td>1</td>
+                  <td>4.95</td>
+                  <td>4.95</td>
+                  <td>4.95</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Set Parameter Value</td>
+                  <td>1</td>
+                  <td>8.72</td>
+                  <td>8.72</td>
+                  <td>8.72</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Support User Credentials</td>
+                  <td>1</td>
+                  <td>4.71</td>
+                  <td>4.71</td>
+                  <td>4.71</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Syslog</td>
+                  <td>1</td>
+                  <td>5.12</td>
+                  <td>5.12</td>
+                  <td>5.12</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Time Zone Network Time Disabled</td>
+                  <td>1</td>
+                  <td>16.54</td>
+                  <td>16.54</td>
+                  <td>16.54</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Timezone</td>
+                  <td>1</td>
+                  <td>13.84</td>
+                  <td>13.84</td>
+                  <td>13.84</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Timezone-Posix</td>
+                  <td>1</td>
+                  <td>9.78</td>
+                  <td>9.78</td>
+                  <td>9.78</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Video - Multicast Range Filters</td>
+                  <td>1</td>
+                  <td>8.61</td>
+                  <td>8.61</td>
+                  <td>8.61</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Video - Multicast VLAN Registration (MVR)</td>
+                  <td>1</td>
+                  <td>12.82</td>
+                  <td>12.82</td>
+                  <td>12.82</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Video Service</td>
+                  <td>1</td>
+                  <td>8.6</td>
+                  <td>8.6</td>
+                  <td>8.6</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Video Service GigaCenter_ONT_FullBridge</td>
+                  <td>1</td>
+                  <td>25.27</td>
+                  <td>25.27</td>
+                  <td>25.27</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Video Service GigaCenter_RG_L2_Bridged</td>
+                  <td>1</td>
+                  <td>10.88</td>
+                  <td>10.88</td>
+                  <td>10.88</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Voice Service</td>
+                  <td>1</td>
+                  <td>5.53</td>
+                  <td>5.53</td>
+                  <td>5.53</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Voice Service T_Series</td>
+                  <td>1</td>
+                  <td>11.23</td>
+                  <td>11.23</td>
+                  <td>11.23</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Wi-Fi Country</td>
+                  <td>1</td>
+                  <td>10.04</td>
+                  <td>10.04</td>
+                  <td>10.04</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Wi-Fi SSID</td>
+                  <td>1</td>
+                  <td>8.41</td>
+                  <td>8.41</td>
+                  <td>8.41</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Wi-Fi SSID For EXOS</td>
+                  <td>1</td>
+                  <td>62.79</td>
+                  <td>62.79</td>
+                  <td>62.79</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select Category of Wi-Fi Unified Primary SSID For EXOS</td>
+                  <td>1</td>
+                  <td>36.16</td>
+                  <td>36.16</td>
+                  <td>36.16</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select category of PIQ security settings anamoly disabled and defence enabled</td>
+                  <td>1</td>
+                  <td>19.75</td>
+                  <td>19.75</td>
+                  <td>19.75</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select category of PIQ security settings anamoly enabled and defence disabled</td>
+                  <td>1</td>
+                  <td>20.22</td>
+                  <td>20.22</td>
+                  <td>20.22</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select category of acl entry for remote access</td>
+                  <td>1</td>
+                  <td>63.42</td>
+                  <td>63.42</td>
+                  <td>63.42</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select category of acl entry for voip</td>
+                  <td>1</td>
+                  <td>63.6</td>
+                  <td>63.6</td>
+                  <td>63.6</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select category of experienceiq restrictions</td>
+                  <td>1</td>
+                  <td>309.95</td>
+                  <td>309.95</td>
+                  <td>309.95</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select toggle buttons under applications and websites</td>
+                  <td>2</td>
+                  <td>13.71</td>
+                  <td>13.75</td>
+                  <td>13.73</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Select toggle buttons under content</td>
+                  <td>3</td>
+                  <td>87.03</td>
+                  <td>87.2</td>
+                  <td>87.09</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Step 1 Start for New Profiles</td>
+                  <td>57</td>
+                  <td>19.74</td>
+                  <td>36.65</td>
+                  <td>20.63</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Step 2 Build Profile for New Profiles</td>
+                  <td>57</td>
+                  <td>7.11</td>
+                  <td>11.45</td>
+                  <td>7.37</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Step 3 Review for New Profiles</td>
+                  <td>55</td>
+                  <td>2.31</td>
+                  <td>60.66</td>
+                  <td>5.49</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Validate the sorting buttons in acl entry</td>
+                  <td>2</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify add website button</td>
+                  <td>3</td>
+                  <td>3.19</td>
+                  <td>3.22</td>
+                  <td>3.21</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify all categorys</td>
+                  <td>59</td>
+                  <td>0.5</td>
+                  <td>2.2</td>
+                  <td>0.81</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify all the titles and texts</td>
+                  <td>3</td>
+                  <td>7.41</td>
+                  <td>8.47</td>
+                  <td>7.83</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify experienceiq restrictions should not be availabele in dropdown</td>
+                  <td>1</td>
+                  <td>151.17</td>
+                  <td>151.17</td>
+                  <td>151.17</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify invalid value toast</td>
+                  <td>3</td>
+                  <td>3.92</td>
+                  <td>4.79</td>
+                  <td>4.21</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the Broadcasting radio Btn</td>
+                  <td>2</td>
+                  <td>0.01</td>
+                  <td>0.01</td>
+                  <td>0.01</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the Review Page for profile</td>
+                  <td>1</td>
+                  <td>10.32</td>
+                  <td>10.32</td>
+                  <td>10.32</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the Security Dropdown</td>
+                  <td>1</td>
+                  <td>3.47</td>
+                  <td>3.47</td>
+                  <td>3.47</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the Service radio Btn</td>
+                  <td>2</td>
+                  <td>0.01</td>
+                  <td>0.02</td>
+                  <td>0.02</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the Step 1 by clicking on Previous Button for profile</td>
+                  <td>1</td>
+                  <td>5.19</td>
+                  <td>5.19</td>
+                  <td>5.19</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the Step 2 by clicking on Previous Button for profile</td>
+                  <td>1</td>
+                  <td>5.16</td>
+                  <td>5.16</td>
+                  <td>5.16</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the already created category is not available in new category dropdown</td>
+                  <td>2</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the elements acl entry for remote access by default</td>
+                  <td>1</td>
+                  <td>60.58</td>
+                  <td>60.58</td>
+                  <td>60.58</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the elements acl entry for voip by default</td>
+                  <td>1</td>
+                  <td>60.6</td>
+                  <td>60.6</td>
+                  <td>60.6</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the elements of new rule in acl entry for remote access by default</td>
+                  <td>1</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the elements of new rule in acl entry for voip by default</td>
+                  <td>1</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the error text with already available adresses</td>
+                  <td>1</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the error text with already available ipv4 and ipv6 adresses</td>
+                  <td>1</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the review Page for acl entry for voip</td>
+                  <td>1</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the review page</td>
+                  <td>1</td>
+                  <td>12.3</td>
+                  <td>12.3</td>
+                  <td>12.3</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the review page for acl entry for remote access</td>
+                  <td>1</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify the review page for experienceiq restrictions</td>
+                  <td>1</td>
+                  <td>7.34</td>
+                  <td>7.34</td>
+                  <td>7.34</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify website delete popup</td>
+                  <td>3</td>
+                  <td>15.28</td>
+                  <td>15.43</td>
+                  <td>15.37</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.Verify websites</td>
+                  <td>3</td>
+                  <td>33.79</td>
+                  <td>34.75</td>
+                  <td>34.18</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.View the Created Profile</td>
+                  <td>1</td>
+                  <td>25.88</td>
+                  <td>25.88</td>
+                  <td>25.88</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.verify the toggle buttons presents under applications</td>
+                  <td>3</td>
+                  <td>1.52</td>
+                  <td>1.54</td>
+                  <td>1.53</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">SubScriberOperationsKeywords.verify the toggle buttons presents under content</td>
+                  <td>3</td>
+                  <td>1.65</td>
+                  <td>1.7</td>
+                  <td>1.68</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">config_parser.Parse Yaml</td>
+                  <td>40</td>
+                  <td>0.0</td>
+                  <td>2.2</td>
+                  <td>0.31</td>
+                </tr>
+              
+                <tr>
+                  <td style="word-wrap: break-word;max-width: 250px; white-space: normal; text-align: left;">css=#AddWebsite</td>
+                  <td>3</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                </tr>
+              
+            
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      function openPage(pageName,elmnt,color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.color = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.color = color;
+    
+        }
+        document.getElementById("defaultOpen").click();
+     </script>
+     <script>
+        document.getElementById("defaultOpen").click();
+     </script>
+
+    <script>
+      function executeDataTable(tabname, sortCol) {
+        var fileTitle;
+        switch(tabname) {
+          case "#sm":
+            fileTitle = "SuiteMetrics";
+            break;
+          case "#tm":
+            fileTitle = "TestMetrics";
+            break;
+          case "#km":
+            fileTitle = "KeywordMetrics";
+            break;
+          default:
+            fileTitle = "Metrics";
+        }
+        $(tabname).DataTable(
+          {
+            retrieve: true,
+            "order": [[ Number(sortCol), "desc" ]],
+            dom: 'l<".margin" B>frtip',
+            buttons: [
+              {
+                extend:'copyHtml5',
+                text: '<i class="fa fa-files-o"></i>',
+                filename: function() {
+                  return fileTitle + '-' + new Date().toLocaleString();
+                },
+                titleAttr: 'Copy',
+                exportOptions: {
+                  columns: ':visible'
+                }
+              },
+              {
+                extend:'csvHtml5',
+                text:'<i class="fa fa-file-text-o"></i>',
+                titleAttr:'CSV',
+                filename: function() {
+                  return fileTitle + '-' + new Date().toLocaleString();
+                },
+                exportOptions: {
+                  columns: ':visible'
+                }
+              },
+              {
+                extend: 'excelHtml5',
+                text:'<i class="fa fa-file-excel-o"></i>',
+                titleAttr: 'Excel',
+                filename: function() {
+                  return fileTitle + '-' + new Date().toLocaleString();
+                },
+                exportOptions: {
+                  columns: ':visible'
+                }
+              },
+              {
+                extend: 'print',
+                text: '<i class="fa fa-print"></i>',
+                titleAttr: 'Print',
+                exportOptions: {
+                  columns: ':visible',
+                  alignment: 'left',
+                }
+              },
+              {
+                extend: 'colvis',
+                collectionLayout: 'fixed two-column',
+                text: '<i class="fa fa-low-vision"></i>',
+                titleAttr: 'Hide Column',
+                exportOptions: {
+                  columns:':visible'
+                },
+                postfixButtons: [ 'colvisRestore' ]
+              },
+            ],
+            columnDefs: [ {
+              visible: false,
+            } ]
+          }
+        );
+      }
+    </script>
+  </body>
+  <script>
+    window.onload = function(){
+      pieChart('#suitePie', "9", "1", "0");
+      pieChart('#testPie', "11", "1", "0");
+      pieChart('#keywordPie', "3408", "15", "0");
+    };
+  </script>
+  <script>
+    function pieChart(chartID, passed, failed, skipped) {
+      var options = {
+        series: [parseInt(passed), parseInt(failed), parseInt(skipped)],
+        chart: {
+          type: 'donut',
+          width: 270,
+        },
+        labels: ["Pass", "Fail", "Skip"],
+        legend: {
+          show: false,
+        },
+        colors: ['#2ecc71', '#fc6666', '#ffa500'],
+      };
+
+      var chart = new ApexCharts(document.querySelector(chartID), options);
+      chart.render();
+    }
+  </script>
+  <script>
+    var passArray = [];
+    var failArray = [];
+    var catgArray = [];
+
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile3");
+        passArray.push(100.0);
+        failArray.push(1);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.RGProfiles");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile6");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile7");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split profile8");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split Profile9");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile1");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile2");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile4");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+      
+        catgArray.push("CCO-Robotframework-23.2.TestScripts.Operations.SubscriberOperations.Operations.Profiles.Split RGProfile5");
+        passArray.push(0.0);
+        failArray.push(0);
+      
+    
+    
+    var options = {
+        series: [{
+          name: 'Fail Percentage',
+          data: passArray,
+          type: "line"
+        }, {
+          name: 'Fail',
+          data: failArray,
+          type: "column"
+        }],
+        chart: {
+          type: 'line',
+          height: 350,
+          // stacked: true,
+        },
+        
+        plotOptions: {
+        bar: {
+          dataLabels: {
+          position: 'center',
+          hideOverflowingLabels: true
+        }
+        },
+      },
+      colors: ['#2ecc71', '#fc6666'],
+      xaxis: {
+          categories: catgArray,
+          tickPlacement: 'off',
+          labels: {
+            show: false,
+            trim: true
+          }
+      },
+      yaxis: [{
+        title: {
+          text: 'Suite Fail Percentage',
+        },
+      
+      }, {
+        opposite: true,
+        title: {
+          text: 'Suite Fail Count'
+        }
+      }],
+      fill: {
+          opacity: 0.9
+      },
+      tooltip: {
+          y: {
+              formatter: function (val) {
+              return val
+              }
+          },
+          x: {
+              show: true
+          }
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#suiteFailureLineID"), options);
+    chart.render();
+  
+  </script>
+  <script>
+    function openInNewTab(url,element_id) {
+      var element_id= element_id;
+      var win = window.open(url, '_blank');
+      win.focus();
+      $('body').scrollTo(element_id);
+    }
+  </script>
+  <script>
+    $(window).on('load',function(){$('.loader').fadeOut();});
+  </script>
+</html>

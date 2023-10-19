@@ -1,0 +1,228 @@
+env:
+  Product_URL: "https://cloud-devfunc.calix.com/"
+  api_url: "https://dev.api.calix.ai"
+
+  login:
+    username: "usercmc@calix.com"
+    password: "calix123"
+
+  RESTAPI:
+    Base_url_DevFunc: https://dev.api.calix.ai
+    username_DevFunc: usercmc@calix.com
+    Password_DevFunc: calix123
+    grant_type_DevFunc: password
+    client_secret_DevFunc: NkTaqdIG8A1RKRQN
+    X_Calix_ClientID: izQyerEezkAMcFGZfVLb55wO6LmzvnkG
+    content_type: application/x-www-form-urlencoded
+
+  Qlick_ObjId:
+    Segment_Name: RNwXPJB
+    Segment_Type: CTpxm
+    Region: JMaAZ
+    Location: LFeyjKg
+    Service: PJsnhVn
+    Propensity: WAxmwY
+
+  Home:
+    Subscriber_name:  Ekramah Kratos
+    Youtube_txt: YouTube
+    Facebook_txt: Facebook
+    Fb_Yt_txt: YouTube,Facebook
+
+  Explore_data:
+    Subscriber_txt:  "Total Acquired in the Last 30 Days:"
+    Revenue_insights_txt:  "Max Potential Revenue:"
+    Rate_insights_txt:  "  Total Acquired in the  Last Six Months:"
+    Time_30_txt: 30 Days
+    Time_Prior_txt: Prior Month
+    Time_2Prior_txt: 2 Prior Months
+    Explore_Basic: Basic
+    Explore_Advanced: Advanced
+    Explore_Prospects: Prospects
+    Explore_Custom_Subs: Custom Subscribers
+    Explore_Custom_Pro: Custom Prospects
+
+  Campaigns:
+    Sched_campaign: Scheduled Campaigns
+    Trigg_campaign: Triggered Campaigns
+    Sched_campaign_drop: Scheduled Campaign
+    Trigg_campaign_drop: Triggered Campaign
+    Market_channel: Engagement Channels
+    Segments_list:
+      Campaign_th: Campaigns
+      Count_th: Count
+      Created_th: Created
+      Modify_th: Last Modified
+      All_type: All Types
+      Acquisition_type: Acquisition
+      Retention_type: Retention
+      Upload_type: Upload
+      Upsell_type: Upsell
+      globVar_segment1:  Casual users
+      globVar_segment2:  ExperienceIQ
+      globVar_segment3:  ProtectIQ
+      globVar_segment4:  Streamer
+      globVar_segment5:  Camera
+      globVar_Retentn_segment1:  Test 495 TS
+      globVar_Retentn_segment2:  Test 495 TS
+      globVar_Retentn_segment3:  Test 495 TS
+      globVar_Retentn_segment4:  Test 495 TS
+      globVar_Retentn_segment5:  Test 495 TS
+      globVar_Acquistn_segment1:  Look-alike Streamer
+      globVar_Acquistn_segment2:  Look-alike Streamer
+      globVar_Acquistn_segment3:  Look-alike Gamers
+      globVar_upsell_savedSeg1:  test
+      globVar_retention_savedSeg1:  Testing
+
+    Scheduled_Campaign:
+      campaigns_th_name: Name
+      campaigns_th_status: Status
+      campaigns_th_type: Type
+      campaigns_th_sub: Subscribers
+      campaigns_th_segment: Segment
+      campaigns_th_audienceSize: Audience Size
+      campaigns_th_channel: Channel(s)
+      campaigns_th_start: Start Date
+      campaigns_th_end: End Date
+      campaigns_th_budget: Budget
+      Inprogress_txt: In-Progress
+      Channel_head: Select Engagement Channel
+      Direct_mail_txt:  Include additional Direct Mail Only audience list
+      Direct_check_txt: "{Campaign} will be deployed as 2 audience lists, {Campaign} — Email Only and {Campaign} — Direct Mail Only.\nThe use of contacts in the {Campaign} - Direct Mail Only audience list is permitted soley for Direct Mail and cannot be used for Email."
+
+    Triggered_campaign:
+      Pause_help_txt: When paused, this campaign will not send any messages until it is unpaused. It may take up to 24 hours for a pause to take effect.
+      Pause_txt:  Pause Campaign
+      Cancel_txt:  Cancel
+      Delete_help_txt:  Are you sure you want to delete this campaign? This cannot be undone.
+      Delete_txt:  Delete Campaign
+      Delete_cnfrm_msge:   Campaign Deleted Successfully!.
+      Draft_txt:   Draft
+      Instance_txt: Instances Required to Trigger *
+      Resend_txt: Do Not Resend For *
+      Budget_txt:   Budget ($)
+      Target_txt:   Conversion Target (%)
+      Start_txt:   Start *
+      End_txt:   End
+      Instance_default: 50
+      Resend_default: 90
+      Instance_invalid: 29
+      Resend_invalid: 44
+      Instance_warn: Instances per 30 to 999 Days to Trigger Required.
+      Resend_warn: Do Not Resend For 45 to 365 Days Required.
+      Instance_valid: 30
+      Resend_valid: 45
+      Instance_Pause_Input: 45
+      Resend_Pause_Input: 75
+      Budget_Input: 465
+      Target_Input: 75
+      Budget_result_Input: $465
+      Target_result_Input: 75%
+      Save_cmp_txt: Save Campaign
+      Next_txt:  Next
+      Previous_txt: Previous
+      Channel_txt:  Channel
+      Segment_txt:  Segment Size
+      Includes_txt:  Includes in Channel
+      Description_txt:  Description
+      Mailchimp_desc:  Sync subscriber information to Mailchimp audience list
+      Mobile_desc:  Messages can only be sent to subscribers that have CommandIQ installed
+      Competitor_name: Competitor Visit Minutes
+      Speed_name: Speed Test Minutes
+      mailchimp_headerTxt:  1. Mailchimp
+      mailchimp_helpTxt: Service Limit Hit - will be deployed to Mailchimp when you click
+      Note_helpTxt: "Note : Do not Deploy unless you have already created the campaign in Mailchimp"
+      ECB_helpTxt: Electronic Content Builder can help you to design your collateral for use in Mailchimp.
+      Deploy_txt: Deploy Campaign
+      Deploy_help_txt: The following action will be executed
+      Deploy_mobile_txt:   Send Command IQ Mobile Notification
+      Deploy_audience_txt: Audience data will be sent daily to Mailchimp
+      Result_audience_txt: Audience (Last Sent)
+      Result_date_txt: Start Date
+      Result_Deploy:  Deployment Status
+      Result_date_end_txt:   End Date
+      Result_rate_txt:  Conversion Rate
+      Result_Budget_txt:  Budget
+      Active_txt:  Active
+      Audience_dis_txt:  Audience Distribution
+      Audience_help_txt:  "Cumulative Audience Members Included in Selected Channels {Date}"
+      Audience_channel_txt:  Channel(s)
+      Segment_mem_txt:  Audience Members
+      Subscriber_chart_txt:  Subscribers
+      Result_mail_txt:  Mailchimp
+      Mobile_mail_txt:   Mobile Notification,Mailchimp
+      Mobile_txt:   Mobile Notification
+      Result_Performance_txt:  Campaign Performance
+      Result_Size_txt:  Campaign Audience Size
+      Result_Total_txt:  Total Subscribers
+      Result_Daily_txt:  Daily Campaign Audience
+      Active_budget_txt:  $465
+      Trigger_txt:  Triggered
+      Paused_txt:  Paused
+      Unpause_header_txt:  Unpause Campaign
+      Unpause_help_txt: This campaign will resume sending messages once it has been unpaused. It may take up to 24 hours for an unpause to take effect.
+      Trigger_th: Trigger
+      Campaigns_page_title: Triggered Campaigns-Engagement-Calix Cloud
+      All_txt: All
+      Complete_txt: Complete
+      Campaign_name: Campaign Name *
+      Trigger_type: Trigger Type *
+      Competitor_type: Competitor Visit Minutes (Mobile Notification Only)
+      Service_type: Service Limit Hit
+      Speed_type: Speed Test Minutes (Mobile Notification Only)
+      Competitor_help_txt: Subscribers who qualify for multiple Competitor Visit Minutes campaigns will only be included in one campaign.
+      Trigger_help_txt: Subscribers who qualify for multiple Service Limit Hit campaigns will only be included in one campaign.
+      Speed_help_txt: Subscribers who qualify for multiple Speed Test Minutes campaigns will only be included in one campaign.
+      Impact_Comp_txt: This criteria will apply to all Competitor Visit Minutes campaigns
+      Impact_help_txt: This criteria will apply to all Service Limit Hit campaigns
+      Impact_Speed_txt: This criteria will apply to all Speed Test Minutes campaigns
+      Event_name_txt:  Mailchimp Event Name *
+      Event_help_txt: Must match Mailchimp campaign trigger
+      Impact_txt:  Impacted Campaigns
+      Event_Invalid_name: "!@#$%^&*()_-"
+      Event_Valid_name: Gamer_123456
+      Instance_Active_Input: 99
+      Resend_Active_Input: 125
+      Last_txt: Last Deployment
+      Audience_txt: Total Channel Audience
+      Synced_txt: Synced to Mailchimp
+      Mobile_sent_txt: Notifications Sent
+      Mobile_notif_txt: CommandIQ Mobile Notification
+      New_trig_txt: New Triggered Campaign
+      Sync_th: Sync Date
+      Email_th: Email
+      All_drop: All Channels
+
+    Engagement_channels:
+      Mailchimp_instruction_1: "The integration with Mailchimp allows users to send CEC audience segments directly to Mailchimp. Before you begin, you’ll need to have a Mailchimp account. If you don’t have a Mailchimp account already, you can create an account here."
+      Mailchimp_instruction_2: 'To configure your connection from CEC to Mailchimp, click the "Connect to Mailchimp"  button. A pop-up notification will appear and you’ll then need to login to your Mailchimp to complete the configuration process.'
+      Mailchimp_instruction_3: 'Once it’s set up, you can test the connection by clicking on the "Test Connection" button. After you click, you’ll get a pop-up confirming if the connection is successful.'
+      Mailchimp_instruction_4: "If the connection is successful, you’ll now be able to select a Mailchimp audience and send your Calix Engagement Cloud segments directly to the audience you have selected. These will show up as tags on your existing audience list, and if an audience member is not already in Mailchimp, he or she will be added to the Mailchimp audience."
+      Mailchimp_instruction_5: "From there, you can utilize your engagement segment in Mailchimp. Once you’ve deployed an email campaign in Mailchimp you will start seeing channel results (opens, clicks, bounces, etc.) in Calix Engagement Cloud (this information is pulled back, automatically, every night)."
+      Mailchimp_instruction_6: "Need more help? Check out the Calix Community."
+      Facebook_instruction_1: "The integration with Facebook allows users to send Calix Engagement Cloud audience segments directly to Facebook where they can then be used for various Engagement activities. Before you begin, you’ll need to have the following:"
+      Facebook_instruction_2: "Facebook Business Account. You can sign for a business account here if you don’t already have one."
+      Facebook_instruction_3: "Facebook Developer Account.  If you’ve signed up for a Facebook Business Account, you’ll already have a Developers.Facebook.com account."
+      Facebook_instruction_4: "Facebook App. You will have access to Apps if you have a Facebook Developer Account."
+      Facebook_instruction_5: "Once you are certain you have the above information, you’ll be able to set up the configuration from Calix Engagement Cloud to Facebook."
+      Facebook_instruction_6: 'First, log in to your Facebook Developer Account and click on the "My Apps"  tab.'
+      Facebook_instruction_7: 'Locate the Facebook app you want to connect to Calix Engagement Cloud. Click on the app and then once you’ve been redirected find and click on the "Engagement API" section on the left sidebar. (If you don’t have the Engagement API option in the sidebar you’ll need to add it.'
+      Facebook_instruction_8: 'Once you’ve expanded the Engagement API section, click on "Tools." You should now see the "Get Access Token" page. Select all 3 options below the "Select Token Permissions" and click "Get Token."'
+      Facebook_instruction_9: 'Copy the generated token and paste it in the "Facebook API Key"  field on this page.'
+      Facebook_instruction_10: 'Next, you need to get your Facebook Ad Account ID. You can find it when you click on "Dashboard" in the Facebook Developer Account. Alternatively, you can log into your Facebook Business Account and click on "More Tools" in the menu on the left, then select "Audiences." Click on the Account dropdown on the top right and you should see your Ad Account ID. Paste the ID in the "Facebook AD Account ID"  on this page.'
+      Facebook_instruction_11: 'Once the "Facebook API Key" and "Facebook AD Account ID" are entered, click the "Test Connection" button to make sure the connection is set up properly.'
+      Facebook_instruction_12: "From there, you can utilize your engagement segment in Facebook. Once you’ve deployed a campaign in Facebook you will start seeing channel results (impressions, spend, reach, clicks, unique clicks, etc.) in Calix Engagement Cloud (this information is pulled back, automatically, every night)."
+      Hubspot_instruction_1: "This integration with HubSpot allows users to send Calix Engagement Cloud audience segments directly to HubSpot. Engagement Cloud will send over contact records, including Name, Email, Zip Code, Country and Phone Number, as well as tags from the campaign name. This will allow you to quickly run a campaign in HubSpot based on an audience created in Calix Engagement Cloud (ie All Gamers). Before you begin, you’ll need to have a HubSpot account. If you don’t have a HubSpot account already, you can create a free account here."
+      Hubspot_instruction_2: 'To configure your connection from Calix Engagement Cloud to HubSpot, click the "Connect to HubSpot" button. A pop-up notification will appear and you’ll then need to login to your HubSpot to complete the configuration process. You will need to use credentials associated with the "Super Admin" for your HubSpot account.'
+      Hubspot_instruction_3: 'Once it’s set up, you can test the connection by clicking on the "Test Connection" button. After you click, you’ll get a pop-up notification confirming if the connection is successful.'
+      Hubspot_instruction_4: "If the connection is successful, you’ll be able to send your Calix Engagement Cloud segments directly to the audience you have selected in HubSpot. These will show up as tags on your existing records (or new records will appear if they are not existing contacts within HubSpot)."
+      Hubspot_instruction_5: "From there, you can utilize your segment in HubSpot. Once you’ve deployed a campaign in HubSpot you will start seeing channel results (sent, opened, processed, etc.) in Calix Engagement Cloud (this information is pulled back, automatically, every night)."
+      CC_instruction_1: "This integration with Constant Contact allows users to send Calix Engagement Cloud audience segments directly to Constant Contact. Engagement Cloud will send over contact records, including Name, Email, Zip Code, Country and Phone Number, as well as tags from the campaign name. This will allow you to quickly run a campaign in Constant Contact based on an audience created in Calix Engagement Cloud (ie All Gamers). Before you begin, you’ll need to have a Constant Contact account. If you don’t have a Constant Contact account already, you can create a free account trial  here."
+      CC_instruction_2: 'To configure your connection from Calix Engagement Cloud to Constant Contact, click the “Connect to Constant Contact" button. A pop-up notification will appear and you’ll then need to login to your Constant Contact to complete the configuration process'
+      CC_instruction_3: 'Once it’s set up, you can test the connection by clicking on the "Test Connection" button. After you click, you’ll get a pop-up notification confirming if the connection is successful.'
+      CC_instruction_4: "If the connection is successful, you’ll be able to send your Calix Engagement Cloud segments directly to your Constant Contact account by deploying a Calix Engagement Cloud campaign to Constant Contact. The campaign name will show up as a tag on your existing records (or new records will appear if they are not existing contacts within Constant Contact)."
+      CC_instruction_5: "From there, you can utilize your segment in Constant Contact. Once you’ve deployed a campaign in Constant Contact you will start seeing channel results (sent, opened, processed, etc.) in Calix Engagement Cloud (this information is pulled back, automatically, every night)"
+
+    All_Campaign:
+      results_segmentAverageHeaderTxt: Average Revenue Per Campaign Member
+      results_totalaudTxt: Total Revenue of Campaign Audience
